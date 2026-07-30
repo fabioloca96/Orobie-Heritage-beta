@@ -1,0 +1,196 @@
+﻿---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiences – Orobie Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F0EBE1;--parchment:#E8E1D5;--tan:#D4C8B4;
+  --sand:#C2B49A;--earth:#8C7A62;--bark:#5A4A36;
+  --peak:#2E2416;--rust:#9C6040;--sage:#7A8C74;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--bark);font-family:var(--sans);font-weight:300;min-height:100vh}
+img{display:block;max-width:100%}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.3rem 2.5rem;
+  background:rgba(240,235,225,.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--tan);
+}
+.nav-logo{text-decoration:none}
+.nav-logo img{height:76px;width:auto}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--bark);text-decoration:none;transition:color .2s}
+.nav-center a:hover,.nav-center a.active{color:var(--rust)}
+.nav-lang{font-size:.85rem;letter-spacing:.12em;color:var(--earth);text-decoration:none}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--bark)}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding:4rem 3rem 2.5rem;
+  max-width:1180px;margin:0 auto;
+}
+.page-eyebrow{
+  display:flex;align-items:center;gap:.9rem;
+  font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);
+  margin-bottom:1rem;
+}
+.page-eyebrow::before{content:'';width:36px;height:1px;background:var(--rust)}
+.page-title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  color:var(--peak);line-height:1;margin-bottom:.8rem;
+}
+.page-sub{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.1rem;color:var(--earth);
+}
+
+/* ── CATALOG ── */
+.exp-list{max-width:1180px;margin:0 auto;padding:0 3rem 5rem;display:flex;flex-direction:column;gap:2.5rem}
+.exp-card{display:grid;grid-template-columns:340px 1fr;background:var(--parchment);border:1px solid var(--tan)}
+.exp-cover{position:relative;min-height:260px;background:linear-gradient(160deg,#8A9E98 0%,#5C7468 50%,#3A5040 100%);overflow:hidden}
+.exp-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.exp-cover-placeholder{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.2rem;color:rgba(240,235,225,.6);font-family:var(--sans);font-size:.85rem;letter-spacing:.06em}
+.exp-body{padding:1.8rem 2rem}
+.exp-title{font-family:var(--serif);font-weight:300;font-size:1.6rem;color:var(--peak);margin-bottom:.3rem}
+.exp-excerpt{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--earth);margin-bottom:.9rem}
+.exp-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.exp-pill{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;background:var(--cream);border:1px solid var(--tan);color:var(--earth)}
+.exp-desc p{font-family:var(--serif);font-size:.95rem;color:var(--earth);line-height:1.6;margin-bottom:.7rem}
+.exp-desc p:last-child{margin-bottom:0}
+.exp-gallery{display:flex;gap:.5rem;margin:1rem 0}
+.exp-gallery-item{width:64px;height:64px;border:1px solid var(--tan);overflow:hidden;flex-shrink:0}
+.exp-gallery-item img{width:100%;height:100%;object-fit:cover}
+.btn{
+  display:inline-block;margin-top:.6rem;padding:.65rem 1.7rem;
+  border:1px solid var(--bark);
+  font-family:var(--sans);font-size:.8rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bark);text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.btn:hover{background:var(--bark);color:var(--cream)}
+.no-events{
+  font-family:var(--serif);font-style:italic;
+  font-size:1rem;color:var(--sand);text-align:center;
+  padding:2rem;
+}
+
+/* mob */
+.mob-menu{display:none;position:fixed;inset:0;z-index:400;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--serif);font-size:2rem;color:var(--peak);text-decoration:none}
+.mob-close{position:absolute;top:1.4rem;right:2rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--bark)}
+
+@media(max-width:900px){
+  nav{padding:.3rem 1.4rem}
+  .nav-logo img{height:50px}
+  .nav-center,.nav-lang{display:none}
+  .hamburger{display:flex}
+  .page-header{padding:2.5rem 1.4rem 1.5rem}
+  .exp-list{padding:0 1.4rem 3rem}
+  .exp-card{grid-template-columns:1fr}
+  .exp-cover{min-height:200px}
+}
+@media(max-width:520px){
+  .page-header{padding:2rem 1rem 1.2rem}
+  .exp-list{padding:0 1rem 2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="../images/logo-nav.png" alt="Orobie Heritage">
+  </a>
+  <ul class="nav-center">
+    <li><a href="index.html#intro">Explore</a></li>
+    <li><a href="index.html#intro">Landscape</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="experiences.html" class="active">Experiences</a></li>
+    <li><a href="excursions.html">Excursions</a></li>
+    <li><a href="visit.html">Visit</a></li>
+    <li><a href="index.html#footer">Contact</a></li>
+  </ul>
+  <a href="../esperienze.html" class="nav-lang">IT</a>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-menu" id="mob">
+  <button class="mob-close" id="mob-close">✕</button>
+  <a href="index.html#intro" onclick="closeMob()">Explore</a>
+  <a href="experiences.html" onclick="closeMob()">Experiences</a>
+  <a href="excursions.html" onclick="closeMob()">Excursions</a>
+  <a href="visit.html" onclick="closeMob()">Visit</a>
+  <a href="index.html#footer" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow">Catalog</div>
+  <h1 class="page-title">Experiences</h1>
+  <p class="page-sub">Choose your next excursion and book directly.</p>
+</div>
+
+<!-- CATALOG -->
+<div class="exp-list">
+  {% for ev in site.esperienze %}
+  <div class="exp-card">
+    <div class="exp-cover">
+      {% if ev.cover %}
+        <img src="../{{ ev.cover }}" alt="{{ ev.title_en | default: ev.title }}">
+      {% else %}
+        <div class="exp-cover-placeholder">← upload a cover photo from /admin</div>
+      {% endif %}
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">{{ ev.title_en | default: ev.title }}</div>
+      {% assign exc = ev.excerpt_en | default: ev.excerpt %}
+      {% if exc %}<p class="exp-excerpt"><em>{{ exc }}</em></p>{% endif %}
+      <div class="exp-meta">
+        {% if ev.price %}<span class="exp-pill">{{ ev.price }}</span>{% endif %}
+        {% if ev.duration %}<span class="exp-pill">{{ ev.duration }}</span>{% endif %}
+        {% if ev.difficulty %}<span class="exp-pill">{{ ev.difficulty }}</span>{% endif %}
+      </div>
+      {% if ev.body_en and ev.body_en != "" %}
+        <div class="exp-desc">{{ ev.body_en | markdownify }}</div>
+      {% elsif ev.content and ev.content != "" %}
+        <div class="exp-desc">{{ ev.content }}</div>
+      {% endif %}
+      {% if ev.gallery %}
+      <div class="exp-gallery">
+        {% for img in ev.gallery %}<div class="exp-gallery-item"><img src="../{{ img }}" alt=""></div>{% endfor %}
+      </div>
+      {% endif %}
+      {% assign wa_msg = "Hi! I'd like to book: " | append: ev.title_en | default: ev.title %}
+      <a class="btn" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_msg | uri_escape }}" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+    </div>
+  </div>
+  {% endfor %}
+  {% if site.esperienze.size == 0 %}
+  <p class="no-events">No experiences available at the moment.</p>
+  {% endif %}
+</div>
+
+<script>
+document.getElementById('ham').onclick=()=>document.getElementById('mob').classList.add('open');
+document.getElementById('mob-close').onclick=()=>document.getElementById('mob').classList.remove('open');
+function closeMob(){document.getElementById('mob').classList.remove('open')}
+</script>
+</body>
+</html>

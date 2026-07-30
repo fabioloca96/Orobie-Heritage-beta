@@ -1,0 +1,17 @@
+---
+---
+[
+  {% for ev in site.escursioni %}
+  {
+    "date": "{{ ev.date | date: '%Y-%m-%d' }}",
+    "category": {{ ev.category | jsonify }},
+    "title": {{ ev.title | jsonify }},
+    "title_en": {{ ev.title_en | jsonify }},
+    "desc": {{ ev.desc | jsonify }},
+    "desc_en": {{ ev.desc_en | jsonify }},
+    "tags": {{ ev.tag_list | jsonify }},
+    "tags_en": {{ ev.tag_list_en | jsonify }},
+    "images": {{ ev.images | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

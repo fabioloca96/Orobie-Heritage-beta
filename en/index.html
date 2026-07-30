@@ -1,0 +1,459 @@
+﻿---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orobie Heritage – Mountain & Nature Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F0EBE1;
+  --parchment:#E8E1D5;
+  --tan:#D4C8B4;
+  --sand:#C2B49A;
+  --earth:#8C7A62;
+  --bark:#5A4A36;
+  --peak:#2E2416;
+  --rust:#9C6040;
+  --sage:#7A8C74;
+  --mist:#B0BCAA;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--bark);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+img{display:block;max-width:100%}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+
+/* ══════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 2.5rem;
+  transition:background .4s, box-shadow .4s, padding .4s;
+}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{
+  font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;
+  text-decoration:none;transition:color .3s;
+  color:var(--bark);
+}
+.nav-center a:hover{color:var(--rust)}
+.nav-lang{font-size:.85rem;letter-spacing:.12em;color:var(--earth);transition:color .3s;text-decoration:none}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--bark);transition:background .3s}
+
+nav.on-hero{
+  background:linear-gradient(180deg, rgba(28,22,14,.55) 0%, rgba(28,22,14,.18) 70%, rgba(28,22,14,0) 100%);
+}
+nav.on-hero .nav-center a{color:#F0EBE1;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+nav.on-hero .nav-center a:hover{color:var(--sand)}
+nav.on-hero .nav-lang{color:rgba(240,235,225,.85);text-shadow:0 1px 3px rgba(0,0,0,.45)}
+nav.on-hero .hamburger span{background:#F0EBE1;box-shadow:0 1px 2px rgba(0,0,0,.45)}
+
+nav.scrolled{
+  background:rgba(240,235,225,.95);
+  backdrop-filter:blur(8px);
+  box-shadow:0 2px 20px rgba(46,36,22,.07);
+  padding:.8rem 2.5rem;
+}
+nav.scrolled .nav-center a{color:var(--bark)}
+nav.scrolled .nav-lang{color:var(--earth)}
+nav.scrolled .hamburger span{background:var(--bark)}
+
+/* ══════════════════════════════════════
+   LOGO
+══════════════════════════════════════ */
+.logo-wrap{
+  position:fixed;
+  z-index:299;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:auto;
+  transition:top .55s cubic-bezier(.4,0,.2,1),
+             left .55s cubic-bezier(.4,0,.2,1),
+             width .55s cubic-bezier(.4,0,.2,1),
+             transform .55s cubic-bezier(.4,0,.2,1);
+  pointer-events:all;
+  cursor:pointer;
+}
+.logo-wrap img{width:100%;height:auto;display:block}
+
+.logo-wrap.small{
+  top: 20%;left:2.5rem;
+  transform:translateY(-50%);
+  width: 250px;
+  opacity: 40%;
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero{
+  position:relative;
+  height:100vh;min-height:600px;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:10vh;overflow:hidden;
+}
+.hero-mist{
+  position:absolute;inset:0;z-index:4;
+  background:radial-gradient(ellipse 80% 60% at 50% 70%,
+    rgba(240,235,225,1.25) 5%,
+    rgba(240,235,225,.35) 40%,
+    rgba(240,235,225,0) 70%);
+  pointer-events:none;
+}
+.hero-photo{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+}
+.hero-cream{
+  position:absolute;inset:0;
+  background:var(--cream);
+  opacity:1;
+  transition:opacity .6s ease;
+  z-index:2;
+}
+.hero-cream.gone{opacity:0;pointer-events:none}
+
+.hero-overlay{
+  position:absolute;inset:0;z-index:3;
+  background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.18) 50%,rgba(0,0,0,.55) 100%);
+  opacity:0;transition:opacity .6s ease;
+}
+.hero-overlay.show{opacity:1}
+
+.hero-tear{
+  position:absolute;bottom:-2px;left:0;right:0;
+  height:80px;overflow:hidden;z-index:4;
+}
+.hero-tear svg{position:absolute;bottom:0;width:100%;height:100%}
+
+.hero-content{
+  position:relative;z-index:5;
+  text-align:center;color:#F0EBE1;
+  padding:0 1rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s .15s, transform .6s .15s;
+}
+.hero-content.show{opacity:1;transform:none}
+
+.hero-title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(3.5rem,8.5vw,6.5rem);
+  line-height:.95;
+  letter-spacing:-.01em;color:var(--peak);margin-bottom:.5rem;
+}
+.hero-eyebrow{
+  font-family:var(--sans);font-weight:400;
+  font-size:clamp(1.45rem,1.5vw,.92rem);
+  letter-spacing:.28em;text-transform:uppercase;
+  opacity:.88;color:var(--peak);margin-bottom:1.2rem;
+}
+.hero-divider{width:50px;height:1px;background:rgba(240,235,225,.6);margin:.9rem auto}
+.hero-tag{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(1.7rem,2.5vw,1.6rem);
+  line-height:1.5;opacity:1;color:var(--peak);
+}
+
+/* ══════════════════════════════════════
+   SECTIONS
+══════════════════════════════════════ */
+section{padding:5.5rem 3rem}
+.wrap{max-width:1180px;margin:0 auto}
+
+.intro{background:var(--cream)}
+.intro-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.intro-inner h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.7rem,3vw,2.6rem);
+  line-height:1.25;color:var(--peak);margin-bottom:1.8rem;
+}
+.botanica{margin:1rem 0 1.8rem}
+.btn{
+  display:inline-block;padding:.65rem 1.7rem;
+  border:1px solid var(--bark);
+  font-family:var(--sans);font-size:.8rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bark);text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.btn:hover{background:var(--bark);color:var(--cream)}
+.map-card{
+  background:var(--parchment);border:1px solid var(--tan);
+  padding:2rem;min-height:360px;
+  display:flex;align-items:center;justify-content:center;
+}
+.map-card svg{width:100%;max-width:420px}
+.map-card img{width:100%;max-width:420px;box-shadow:0 10px 30px rgba(74,58,40,.22)}
+
+.explore{background:var(--parchment)}
+.explore-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.8rem;flex-wrap:wrap;gap:1rem}
+.eyebrow{display:flex;align-items:center;gap:.9rem;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust)}
+.eyebrow::before{content:'';width:36px;height:1px;background:var(--rust)}
+.explore-right{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--earth);text-align:right;line-height:1.55}
+.arr-link{display:inline-block;margin-top:.3rem;font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bark);text-decoration:none}
+.arr-link::after{content:' →'}
+.arr-link:hover{color:var(--rust)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.card{background:var(--cream);display:block;text-decoration:none;color:inherit;transition:opacity .2s}
+.card:hover{opacity:.82}
+.card-img{aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--mist),var(--tan));display:flex;align-items:center;justify-content:center}
+.card-body{padding:.85rem 1rem 1.1rem}
+.card-label{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--peak);margin-bottom:.25rem}
+.card-sub{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--earth)}
+
+.about-sec{background:var(--cream)}
+.about-inner{display:grid;grid-template-columns:1fr 1.55fr;gap:4rem;align-items:start}
+.about-photo{aspect-ratio:.75;background:linear-gradient(160deg,#8A9E98 0%,#5C7468 50%,#3A5040 100%);display:flex;align-items:flex-end;padding:1.2rem;color:rgba(240,235,225,.45);font-size:.85rem;font-family:var(--sans);letter-spacing:.08em}
+.about-label{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:.6rem}
+.about-rule{width:36px;height:1px;background:var(--tan);margin:.7rem 0 1.1rem}
+.about-p{font-family:var(--serif);font-size:1.05rem;color:var(--earth);line-height:1.65;margin-bottom:.85rem}
+.about-p em{font-style:italic;color:var(--bark)}
+.seasons{margin-top:2.2rem;padding:1.8rem;border:1px solid var(--tan);background:var(--parchment)}
+.seasons-title{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--earth);text-align:center;margin-bottom:1.5rem}
+.seasons-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.season{display:flex;gap:.8rem;align-items:flex-start}
+.season-ico{flex-shrink:0;margin-top:2px}
+.season-name{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--peak);margin-bottom:.25rem}
+.season-desc{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--earth);line-height:1.45}
+
+footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+.ft-social{display:flex;gap:1rem}
+.ft-social a{color:var(--bark);text-decoration:none;transition:color .2s}
+.ft-social a:hover{color:var(--rust)}
+.ft-center{font-size:.82rem;letter-spacing:.07em;color:var(--earth)}
+.ft-right{font-size:.78rem;color:var(--sand);letter-spacing:.06em}
+
+.mob-menu{display:none;position:fixed;inset:0;z-index:400;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--serif);font-size:2rem;color:var(--peak);text-decoration:none}
+.mob-close{position:absolute;top:1.4rem;right:2rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--bark)}
+
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
+.r.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.r,.logo-wrap,.hero-cream,.hero-overlay,.hero-content{transition:none}}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.4rem}
+  nav.scrolled{padding:.7rem 1.4rem}
+  .nav-center,.nav-lang{display:none}
+  .hamburger{display:flex}
+  section{padding:3.5rem 1.4rem}
+  .intro-inner{grid-template-columns:1fr;gap:2.5rem}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .about-inner{grid-template-columns:1fr}
+  .about-photo{aspect-ratio:16/9}
+  footer{flex-direction:column;align-items:center;text-align:center}
+  .logo-wrap.small{left:1.4rem;width:48px}
+}
+@media(max-width:520px){
+  .cards{grid-template-columns:1fr 1fr;gap:.7rem}
+  .seasons-grid{grid-template-columns:1fr}
+  section{padding:2.8rem 1rem}
+  .logo-wrap{width:min(260px,75vw)}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGO -->
+<a href="#" class="logo-wrap" id="logoWrap">
+  <img src="../images/logo1.png" alt="Orobie Heritage">
+</a>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <div style="width:64px"></div>
+
+  <ul class="nav-center">
+    <li><a href="#intro">Explore</a></li>
+    <li><a href="#intro">Landscape</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="experiences.html">Experiences</a></li>
+    <li><a href="excursions.html">Excursions</a></li>
+    <li><a href="visit.html">Visit</a></li>
+    <li><a href="#footer">Contact</a></li>
+  </ul>
+
+  <a href="../index.html" class="nav-lang">IT</a>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob">
+  <button class="mob-close" id="mob-close">✕</button>
+  <a href="#intro"  onclick="closeMob()">Explore</a>
+  <a href="#intro"  onclick="closeMob()">Landscape</a>
+  <a href="#about"  onclick="closeMob()">About</a>
+  <a href="experiences.html" onclick="closeMob()">Experiences</a>
+  <a href="excursions.html" onclick="closeMob()">Excursions</a>
+  <a href="visit.html" onclick="closeMob()">Visit</a>
+  <a href="#footer" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <img src="../images/hero.jpg" class="hero-photo" alt="Orobie">
+
+  <div class="hero-cream" id="heroCream"></div>
+  <div class="hero-overlay" id="heroOverlay"></div>
+  <div class="hero-mist"></div>
+
+  <div class="hero-tear">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 80 L0 40 Q30 20 55 38 Q80 55 110 30 Q140 8 170 28 Q200 48 230 22 Q260 0 295 18 Q328 36 360 15 Q392 0 420 22 Q448 42 480 18 Q510 0 545 20 Q578 40 610 16 Q642 0 672 22 Q702 44 735 20 Q768 0 800 18 Q832 36 865 14 Q895 0 928 20 Q958 40 990 16 Q1020 0 1055 18 Q1088 36 1120 14 Q1150 0 1182 20 Q1212 40 1245 18 Q1278 0 1310 18 Q1340 36 1370 14 Q1400 0 1440 18 L1440 80 Z" fill="#F0EBE1"/>
+    </svg>
+  </div>
+
+  <div class="hero-content" id="heroContent">
+    <p class="hero-eyebrow">Guided Walks in the Italian Alps</p>
+    <h1 class="hero-title">Orobie Heritage</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tag"><em>Nature, stories and hidden places<br>of the Orobie mountains.</em></p>
+  </div>
+</div>
+
+<!-- INTRO / MAP -->
+<section class="intro" id="intro">
+<div class="wrap">
+  <div class="intro-inner">
+    <div class="r">
+      <h2>I don't simply guide people through mountains. I help them understand the landscape they are walking in.</h2>
+      <div class="botanica">
+        <svg width="130" height="44" viewBox="0 0 130 44" fill="none">
+          <path d="M5 22 Q32 12 65 22 Q98 32 125 22" stroke="#C2B49A" stroke-width=".8" fill="none"/>
+          <path d="M30 22 Q32 13 36 8" stroke="#8C7A62" stroke-width=".7" fill="none"/>
+          <ellipse cx="37.5" cy="6.5" rx="5.5" ry="3" fill="none" stroke="#8C7A62" stroke-width=".6" transform="rotate(-25,37.5,6.5)"/>
+          <path d="M46 22 Q48 13 51 8" stroke="#8C7A62" stroke-width=".7" fill="none"/>
+          <ellipse cx="52" cy="6" rx="5" ry="2.8" fill="none" stroke="#8C7A62" stroke-width=".6" transform="rotate(-12,52,6)"/>
+          <path d="M62 22 Q64 14 67 9" stroke="#8C7A62" stroke-width=".7" fill="none"/>
+          <ellipse cx="68" cy="7.5" rx="5.5" ry="3" fill="none" stroke="#8C7A62" stroke-width=".6" transform="rotate(10,68,7.5)"/>
+          <path d="M80 22 Q82 15 85 11" stroke="#8C7A62" stroke-width=".7" fill="none"/>
+          <ellipse cx="86" cy="9.5" rx="4.5" ry="2.5" fill="none" stroke="#8C7A62" stroke-width=".6" transform="rotate(-8,86,9.5)"/>
+          <path d="M96 22 Q97 16 99 12" stroke="#8C7A62" stroke-width=".6" fill="none"/>
+          <ellipse cx="100" cy="10.5" rx="4" ry="2.2" fill="none" stroke="#8C7A62" stroke-width=".5" transform="rotate(15,100,10.5)"/>
+        </svg>
+      </div>
+      <a href="#explore" class="btn">Discover More</a>
+    </div>
+    <div class="map-card r" style="transition-delay:.1s">
+      <img src="../images/mappa1.png" alt="Map of the Orobie Alps">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EXPLORE -->
+<section class="explore" id="explore">
+<div class="wrap">
+  <div class="explore-top">
+    <div class="eyebrow r">Explore the Orobie</div>
+    <div class="explore-right r" style="transition-delay:.1s">
+      Every valley, every path, every stone<br>has a story to tell.
+      <br><a class="arr-link" href="experiences.html">View Experiences</a>
+    </div>
+  </div>
+  <div class="cards">
+    <a class="card r" href="excursions.html#in-vetta"><div class="card-img"><img src="../images/vette.jpg" alt="Peaks"></div><div class="card-body"><p class="card-label">Summit Routes</p><p class="card-sub">Peaks, ridges, elevation gain</p></div></a>
+    <a class="card r" href="excursions.html#naturalistiche" style="transition-delay:.08s"><div class="card-img"><img src="../images/botanica.jpg" alt="Primula albenensis"></div><div class="card-body"><p class="card-label">Nature Walks</p><p class="card-sub">Botany, geology, wildlife, fossils</p></div></a>
+    <a class="card r" href="excursions.html#micologiche" style="transition-delay:.16s"><div class="card-img"><img src="../images/boletus aestivalis.jpg" alt="Mushrooms"></div><div class="card-body"><p class="card-label">Mushroom Foraging</p><p class="card-sub">Mushrooms, forest, seasonality</p></div></a>
+    <a class="card r" href="excursions.html#e-bike" style="transition-delay:.24s"><div class="card-img"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="14" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><circle cx="34" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><path d="M14 34 L22 18 L30 18 M22 18 L28 34 M14 34 L28 34 M28 34 L34 34" stroke="#C2B49A" stroke-width="1.2" fill="none" stroke-linejoin="round"/><path d="M18 13 L26 13" stroke="#C2B49A" stroke-width="1" opacity=".7"/><path d="M24.5 22 L21.5 27 L24.5 27 L22 32" stroke="#9C6040" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="card-body"><p class="card-label">E-Bike</p><p class="card-sub">Assisted routes, for everyone</p></div></a>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT + SEASONS -->
+<section class="about-sec" id="about">
+<div class="wrap">
+  <div class="about-inner">
+    <div class="r">
+      <div class="about-photo">← add your photo here</div>
+    </div>
+    <div class="r" style="transition-delay:.12s">
+      <p class="about-label">About Me</p>
+      <div class="about-rule"></div>
+      <p class="about-p">I live in Clusone, at the foot of the queen of the Orobie: the Presolana.</p>
+      <p class="about-p">It all started with mushrooms. About ten years ago I began foraging seriously, joining the local mycological group — a network of enthusiasts and old-time experts who opened my eyes to these mountains. From there I never stopped looking around: rocks, plants, fossils, forgotten stories. Understanding what I see, putting a name to things and phenomena, makes me feel part of something bigger. <em>Every path holds more than one story.</em></p>
+      <p class="about-p">I'm a certified Mountain Guide (Accompagnatore di Media Montagna) — a legally recognised professional qualification, not just a hobby: it means specific training in orientation, weather reading, first aid and group management, which qualifies me to guide safely on trails and non-glacial terrain in every season. I also play the baghèt — the ancient Bergamo bagpipe — and my family raises alpacas, with whom I organise walks for families. By trade, I teach electronics in high school. <em>All of it, somehow, comes back to these mountains.</em></p>
+      <a href="story.html" class="arr-link">Read My Story</a>
+      <div class="seasons">
+        <p class="seasons-title">Seasonal Notes</p>
+        <div class="seasons-grid">
+          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3 Q16 9 13 15 Q10 9 13 3Z" fill="#7A8C74" opacity=".7"/><path d="M5 9 Q10 11 13 15 Q8 14 5 9Z" fill="#7A8C74" opacity=".5"/><path d="M21 9 Q16 11 13 15 Q18 14 21 9Z" fill="#7A8C74" opacity=".5"/><circle cx="13" cy="15" r="1.8" fill="#9C6040" opacity=".55"/></svg></div><div><p class="season-name">Spring</p><p class="season-desc">Waterfalls, wild flowers and the awakening of nature.</p></div></div>
+          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="5" fill="none" stroke="#C2B49A" stroke-width=".8"/><g stroke="#C2B49A" stroke-width=".7" opacity=".55"><line x1="13" y1="2" x2="13" y2="5.5"/><line x1="13" y1="20.5" x2="13" y2="24"/><line x1="2" y1="13" x2="5.5" y2="13"/><line x1="20.5" y1="13" x2="24" y2="13"/><line x1="4.9" y1="4.9" x2="7.5" y2="7.5"/><line x1="18.5" y1="18.5" x2="21.1" y2="21.1"/><line x1="4.9" y1="21.1" x2="7.5" y2="18.5"/><line x1="18.5" y1="7.5" x2="21.1" y2="4.9"/></g></svg></div><div><p class="season-name">Summer</p><p class="season-desc">Alpine meadows, starry nights and fresh air.</p></div></div>
+          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4 Q17 9 15 14 L13 22 L11 14 Q9 9 13 4Z" fill="#9C6040" opacity=".55"/><path d="M7 8 Q12 10 13 14 Q9 12 7 8Z" fill="#C2B49A" opacity=".5"/><path d="M19 8 Q14 10 13 14 Q17 12 19 8Z" fill="#C2B49A" opacity=".5"/></svg></div><div><p class="season-name">Autumn</p><p class="season-desc">Golden larches, deer and the colors of the forest.</p></div></div>
+          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 22 L13 5 L20 22Z" fill="none" stroke="#B0BCAA" stroke-width=".8"/><path d="M9 16 L17 16" stroke="#B0BCAA" stroke-width=".6"/><line x1="13" y1="5" x2="13" y2="2" stroke="#B0BCAA" stroke-width=".6"/><circle cx="13" cy="1.5" r=".9" fill="#B0BCAA" opacity=".5"/><g fill="#B0BCAA" opacity=".35"><circle cx="5" cy="12" r=".7"/><circle cx="9" cy="9" r=".7"/><circle cx="17" cy="9" r=".7"/><circle cx="21" cy="12" r=".7"/><circle cx="13" cy="24" r=".7"/><circle cx="8.5" cy="22" r=".7"/><circle cx="17.5" cy="22" r=".7"/></g></svg></div><div><p class="season-name">Winter</p><p class="season-desc">Silence, snow-covered landscapes and animal tracks.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="ft-social">
+    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+  </div>
+  <p class="ft-center">Orobie Heritage – Mountain & Nature Guide</p>
+  <p class="ft-right">© 2026 All rights reserved</p>
+</footer>
+
+<script>
+const nav         = document.getElementById('nav');
+const logoWrap    = document.getElementById('logoWrap');
+const heroCream   = document.getElementById('heroCream');
+const heroOverlay = document.getElementById('heroOverlay');
+const heroContent = document.getElementById('heroContent');
+const heroEl      = document.getElementById('hero');
+
+const THRESHOLD = 60;
+function heroBottom(){ return heroEl.offsetTop + heroEl.offsetHeight }
+
+function update(){
+  const y = window.scrollY;
+
+  if(y < THRESHOLD){
+    logoWrap.classList.remove('small');
+    heroCream.classList.remove('gone');
+    heroOverlay.classList.remove('show');
+    heroContent.classList.remove('show');
+    nav.classList.remove('on-hero','scrolled');
+
+  } else if(y < heroBottom() - 80){
+    logoWrap.classList.add('small');
+    heroCream.classList.add('gone');
+    heroOverlay.classList.add('show');
+    heroContent.classList.add('show');
+    nav.classList.add('on-hero');
+    nav.classList.remove('scrolled');
+
+  } else {
+    logoWrap.classList.add('small');
+    heroCream.classList.add('gone');
+    nav.classList.remove('on-hero');
+    nav.classList.add('scrolled');
+  }
+}
+
+window.addEventListener('scroll', update, {passive:true});
+update();
+
+document.getElementById('ham').onclick = () => document.getElementById('mob').classList.add('open');
+document.getElementById('mob-close').onclick = () => document.getElementById('mob').classList.remove('open');
+function closeMob(){ document.getElementById('mob').classList.remove('open') }
+
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('v')), {threshold:.1});
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

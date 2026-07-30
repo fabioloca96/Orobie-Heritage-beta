@@ -1,0 +1,51 @@
+backend:
+  name: github
+  repo: fabioloca96/Orobie-Heritage
+  branch: main
+  base_url: https://orobie-cms-oauth.fabio-locatelli-1bl.workers.dev
+
+site_url: https://fabioloca96.github.io/Orobie-Heritage
+display_url: https://fabioloca96.github.io/Orobie-Heritage
+publish_mode: simple
+
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "escursioni"
+    label: "Escursioni"
+    label_singular: "Escursione"
+    folder: "_escursioni"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Data", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "Categoria", name: "category", widget: "select", options: [{label: "In Vetta", value: "in-vetta"}, {label: "Naturalistiche", value: "naturalistiche"}, {label: "Micologiche", value: "micologiche"}, {label: "E-Bike", value: "e-bike"}]}
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Title (EN)", name: "title_en", widget: "string", required: false}
+      - {label: "Foto (massimo 2)", name: "images", widget: "list", required: false, max: 2, field: {label: "Foto", name: "image", widget: "image"}}
+      - {label: "Descrizione breve", name: "desc", widget: "text", required: false}
+      - {label: "Description (EN)", name: "desc_en", widget: "text", required: false}
+      - {label: "Tag (separati da virgola)", name: "tag_list", widget: "string", required: false, hint: "es. Media difficoltà, 6h, Presolana"}
+      - {label: "Tags (EN, comma separated)", name: "tag_list_en", widget: "string", required: false, hint: "e.g. Medium difficulty, 6h, Presolana"}
+
+  - name: "esperienze"
+    label: "Esperienze (catalogo)"
+    label_singular: "Esperienza"
+    folder: "_esperienze"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Title (EN)", name: "title_en", widget: "string", required: false}
+      - {label: "Frase breve (per la card)", name: "excerpt", widget: "string", required: false}
+      - {label: "Short phrase (EN, for the card)", name: "excerpt_en", widget: "string", required: false}
+      - {label: "Foto di copertina", name: "cover", widget: "image", required: false}
+      - {label: "Galleria foto (massimo 4)", name: "gallery", widget: "list", required: false, max: 4, field: {label: "Foto", name: "image", widget: "image"}}
+      - {label: "Prezzo", name: "price", widget: "string", required: false, hint: "es. 35€ a persona, oppure \"su richiesta\""}
+      - {label: "Durata", name: "duration", widget: "string", required: false, hint: "es. Mezza giornata, 6 ore"}
+      - {label: "Difficoltà", name: "difficulty", widget: "select", required: false, options: ["Facile", "Media", "Impegnativa"]}
+      - {label: "Descrizione completa", name: "body", widget: "markdown", required: false}
+      - {label: "Full description (EN)", name: "body_en", widget: "markdown", required: false}

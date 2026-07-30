@@ -1,0 +1,536 @@
+﻿---
+---
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escursioni – Orobie Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F0EBE1;--parchment:#E8E1D5;--tan:#D4C8B4;
+  --sand:#C2B49A;--earth:#8C7A62;--bark:#5A4A36;
+  --peak:#2E2416;--rust:#9C6040;--sage:#7A8C74;
+  --slate:#6E8B95;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--bark);font-family:var(--sans);font-weight:300;min-height:100vh}
+img{display:block;max-width:100%}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.3rem 2.5rem;
+  background:rgba(240,235,225,.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--tan);
+}
+.nav-logo{text-decoration:none}
+.nav-logo img{height:76px;width:auto}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--bark);text-decoration:none;transition:color .2s}
+.nav-center a:hover,.nav-center a.active{color:var(--rust)}
+.nav-lang{font-size:.85rem;letter-spacing:.12em;color:var(--earth);text-decoration:none}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--bark)}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding:4rem 3rem 2.5rem;
+  max-width:1180px;margin:0 auto;
+}
+.page-eyebrow{
+  display:flex;align-items:center;gap:.9rem;
+  font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);
+  margin-bottom:1rem;
+}
+.page-eyebrow::before{content:'';width:36px;height:1px;background:var(--rust)}
+.page-title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  color:var(--peak);line-height:1;margin-bottom:.8rem;
+}
+.page-sub{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.1rem;color:var(--earth);
+}
+
+/* ── LEGENDA CATEGORIE ── */
+.cat-legend{
+  max-width:1180px;margin:0 auto;padding:0 3rem 1.6rem;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem 2rem;
+}
+.legend-item{
+  display:flex;align-items:baseline;gap:.55rem;
+  font-family:var(--sans);font-size:.92rem;color:var(--earth);
+}
+.legend-item strong{color:var(--peak);font-weight:500}
+.legend-dot{
+  width:8px;height:8px;border-radius:50%;flex-shrink:0;
+  display:inline-block;margin-top:.25em;
+}
+.legend-dot.cat-in-vetta{background:var(--rust)}
+.legend-dot.cat-naturalistiche{background:var(--sage)}
+.legend-dot.cat-micologiche{background:var(--earth)}
+.legend-dot.cat-e-bike{background:var(--slate)}
+
+/* ── FILTRI CATEGORIA ── */
+.cat-filters{
+  max-width:1180px;margin:0 auto;padding:0 3rem;
+  display:flex;gap:.6rem;flex-wrap:wrap;
+}
+.cat-btn{
+  font-family:var(--sans);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.5rem 1.1rem;border:1px solid var(--tan);background:var(--parchment);color:var(--bark);
+  cursor:pointer;transition:background .2s,color .2s,border-color .2s;
+}
+.cat-btn:hover{border-color:var(--earth)}
+.cat-btn.active{background:var(--bark);color:var(--cream);border-color:var(--bark)}
+.cat-caption{
+  max-width:1180px;margin:.9rem auto 0;padding:0 3rem;
+  font-family:var(--serif);font-style:italic;
+  font-size:.95rem;color:var(--earth);
+}
+
+/* ── LAYOUT ── */
+.main{
+  max-width:1180px;margin:0 auto;
+  padding:0 3rem 5rem;
+  display:grid;grid-template-columns:1fr 340px;
+  gap:3rem;align-items:start;
+}
+
+/* ── CALENDARIO ── */
+.cal-wrap{background:var(--parchment);border:1px solid var(--tan);padding:1.8rem}
+.cal-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.5rem;
+}
+.cal-nav button{
+  background:none;border:1px solid var(--tan);
+  width:32px;height:32px;cursor:pointer;
+  font-size:1rem;color:var(--bark);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.cal-nav button:hover{background:var(--tan)}
+.cal-month{
+  font-family:var(--serif);font-size:1.3rem;
+  font-weight:300;color:var(--peak);letter-spacing:.02em;
+}
+.cal-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:3px;
+}
+.cal-dow{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--earth);text-align:center;padding:.4rem 0;
+}
+.cal-day{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-size:.92rem;color:var(--bark);cursor:default;
+  position:relative;border-radius:50%;
+  transition:background .15s;
+}
+.cal-day.other-month{color:var(--sand);opacity:.5}
+.cal-day.today{font-weight:500;color:var(--rust)}
+.cal-day.today::after{
+  content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
+  width:3px;height:3px;border-radius:50%;background:var(--rust);
+}
+.cal-day.has-event{
+  background:var(--bark);color:var(--cream);
+  cursor:pointer;border-radius:50%;
+}
+.cal-day.has-event:hover{background:var(--rust)}
+.cal-day.has-event.multi::after{
+  content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
+  width:14px;height:2px;background:var(--sand);border-radius:1px;
+}
+
+/* ── LISTA EVENTI ── */
+.events-list{display:flex;flex-direction:column;gap:1rem}
+.events-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:.5rem;
+}
+.events-label{
+  font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);
+}
+.events-count{
+  font-family:var(--serif);font-style:italic;
+  font-size:.9rem;color:var(--earth);
+}
+.event-card{
+  background:var(--parchment);border:1px solid var(--tan);
+  padding:1.2rem 1.4rem;
+  display:grid;grid-template-columns:56px 1fr;
+  gap:1rem;align-items:start;
+  transition:border-color .2s;
+}
+.event-card:hover{border-color:var(--earth)}
+.event-date-block{
+  text-align:center;
+  border-right:1px solid var(--tan);
+  padding-right:1rem;
+}
+.event-day{
+  font-family:var(--serif);font-size:1.8rem;font-weight:300;
+  color:var(--peak);line-height:1;
+}
+.event-mon{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--earth);margin-top:2px;
+}
+.event-body{}
+.event-cat{
+  display:inline-block;font-family:var(--sans);
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.2rem .55rem;margin-bottom:.45rem;color:#fff;
+}
+.event-cat.cat-in-vetta{background:var(--rust)}
+.event-cat.cat-naturalistiche{background:var(--sage)}
+.event-cat.cat-micologiche{background:var(--earth)}
+.event-cat.cat-e-bike{background:var(--slate)}
+.event-title{
+  font-family:var(--serif);font-size:1.05rem;
+  color:var(--peak);margin-bottom:.3rem;
+}
+.event-desc{
+  font-size:.9rem;color:var(--earth);line-height:1.5;
+}
+.event-photos{display:flex;gap:.5rem;margin:.5rem 0}
+.event-photo{width:84px;height:84px;border:1px solid var(--tan);overflow:hidden;flex-shrink:0}
+.event-photo img{width:100%;height:100%;object-fit:cover}
+.event-tags{display:flex;gap:.5rem;margin-top:.6rem;flex-wrap:wrap}
+.event-tag{
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.2rem .55rem;background:var(--cream);
+  border:1px solid var(--tan);color:var(--earth);
+}
+.no-events{
+  font-family:var(--serif);font-style:italic;
+  font-size:1rem;color:var(--sand);text-align:center;
+  padding:2rem;
+}
+
+/* mob */
+.mob-menu{display:none;position:fixed;inset:0;z-index:400;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--serif);font-size:2rem;color:var(--peak);text-decoration:none}
+.mob-close{position:absolute;top:1.4rem;right:2rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--bark)}
+
+@media(max-width:900px){
+  nav{padding:.3rem 1.4rem}
+  .nav-logo img{height:50px}
+  .nav-center,.nav-lang{display:none}
+  .hamburger{display:flex}
+  .page-header{padding:2.5rem 1.4rem 1.5rem}
+  .cat-legend{padding:0 1.4rem 1.2rem}
+  .cat-filters{padding:0 1.4rem}
+  .cat-caption{padding:0 1.4rem}
+  .main{grid-template-columns:1fr;padding:0 1.4rem 3rem}
+}
+@media(max-width:520px){
+  .page-header{padding:2rem 1rem 1.2rem}
+  .cat-legend{grid-template-columns:1fr;padding:0 1rem 1rem}
+  .cat-filters{padding:0 1rem}
+  .cat-caption{padding:0 1rem}
+  .main{padding:0 1rem 2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo-nav.png" alt="Orobie Heritage">
+  </a>
+  <ul class="nav-center">
+    <li><a href="index.html#intro">Scopri</a></li>
+    <li><a href="index.html#intro">Paesaggio</a></li>
+    <li><a href="index.html#about">Chi Sono</a></li>
+    <li><a href="esperienze.html">Esperienze</a></li>
+    <li><a href="escursioni.html" class="active">Escursioni</a></li>
+    <li><a href="index.html#footer">Contatti</a></li>
+  </ul>
+  <a href="en/excursions.html" class="nav-lang">EN</a>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-menu" id="mob">
+  <button class="mob-close" id="mob-close">✕</button>
+  <a href="index.html#intro" onclick="closeMob()">Scopri</a>
+  <a href="esperienze.html" onclick="closeMob()">Esperienze</a>
+  <a href="escursioni.html" onclick="closeMob()">Escursioni</a>
+  <a href="index.html#footer" onclick="closeMob()">Contatti</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow">Calendario</div>
+  <h1 class="page-title">Escursioni</h1>
+  <p class="page-sub">Tutte le uscite in programma nelle Orobie.</p>
+</div>
+
+<!-- LEGENDA CATEGORIE -->
+<div class="cat-legend">
+  <div class="legend-item"><span class="legend-dot cat-in-vetta"></span><strong>In Vetta</strong> — cime, creste, dislivello.</div>
+  <div class="legend-item"><span class="legend-dot cat-naturalistiche"></span><strong>Naturalistiche</strong> — botanica, geologia, fauna, fossili.</div>
+  <div class="legend-item"><span class="legend-dot cat-micologiche"></span><strong>Micologiche</strong> — funghi, bosco, stagionalità.</div>
+  <div class="legend-item"><span class="legend-dot cat-e-bike"></span><strong>E-Bike</strong> — percorsi assistiti, accessibili a tutti.</div>
+</div>
+
+<!-- FILTRI CATEGORIA -->
+<div class="cat-filters" id="catFilters">
+  <button class="cat-btn active" data-cat="">Tutte</button>
+  <button class="cat-btn" data-cat="in-vetta">In Vetta</button>
+  <button class="cat-btn" data-cat="naturalistiche">Naturalistiche</button>
+  <button class="cat-btn" data-cat="micologiche">Micologiche</button>
+  <button class="cat-btn" data-cat="e-bike">E-Bike</button>
+</div>
+<p class="cat-caption" id="catCaption">Tutte le uscite, di ogni tipo.</p>
+
+<!-- MAIN GRID -->
+<div class="main">
+
+  <!-- CALENDARIO -->
+  <div>
+    <div class="cal-wrap">
+      <div class="cal-nav">
+        <button id="prevMonth">&#8592;</button>
+        <span class="cal-month" id="calMonth"></span>
+        <button id="nextMonth">&#8594;</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <!-- LISTA EVENTI -->
+  <div>
+    <div class="events-header">
+      <span class="events-label" id="eventsLabel">Prossime escursioni</span>
+      <span class="events-count" id="eventsCount"></span>
+    </div>
+    <div class="events-list" id="eventsList"></div>
+  </div>
+
+</div>
+
+<script>
+// ── ESCURSIONI (gestite da /admin, scritte nel repo come collection Jekyll) ──
+// dati caricati da escursioni.json (generato da Jekyll dalla collection _escursioni)
+let events = [];
+
+// ── STATO ────────────────────────────────────────────
+let calYear, calMonth;
+let filterDate = null; // null = mostra tutti
+let filterCategory = ''; // '' = tutte le categorie
+
+const now = new Date();
+calYear  = now.getFullYear();
+calMonth = now.getMonth();
+
+// ── CATEGORIE ────────────────────────────────────────
+const CAT_INFO = {
+  '':              {label:'Tutte',           caption:'Tutte le uscite, di ogni tipo.'},
+  'in-vetta':       {label:'In Vetta',        caption:'Cime, creste, dislivello.'},
+  'naturalistiche': {label:'Naturalistiche',  caption:'Botanica, geologia, fauna, fossili.'},
+  'micologiche':    {label:'Micologiche',     caption:'Funghi, bosco, stagionalità.'},
+  'e-bike':         {label:'E-Bike',          caption:'Percorsi assistiti, accessibili a tutti.'}
+};
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterCategory = btn.dataset.cat;
+    document.getElementById('catCaption').textContent = CAT_INFO[filterCategory].caption;
+    filterDate = null;
+    renderCal();
+    renderList();
+  });
+});
+
+// ── MESI/GIORNI IT ───────────────────────────────────
+const MONTHS = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+const MONS_SHORT = ['Gen','Feb','Mar','Apr','Mag','Giu',
+                    'Lug','Ago','Set','Ott','Nov','Dic'];
+const DAYS = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+
+// ── CALENDARIO ───────────────────────────────────────
+function renderCal(){
+  document.getElementById('calMonth').textContent = MONTHS[calMonth] + ' ' + calYear;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  DAYS.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-dow';
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const first = new Date(calYear, calMonth, 1);
+  // lunedì = 0
+  let startDow = first.getDay() - 1;
+  if(startDow < 0) startDow = 6;
+
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const prevDays    = new Date(calYear, calMonth, 0).getDate();
+
+  // giorni mese precedente
+  for(let i = startDow-1; i >= 0; i--){
+    const el = document.createElement('div');
+    el.className = 'cal-day other-month';
+    el.textContent = prevDays - i;
+    grid.appendChild(el);
+  }
+
+  const todayStr = toDateStr(now);
+
+  for(let d = 1; d <= daysInMonth; d++){
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const dayEvs  = events.filter(e => e.date === dateStr && (!filterCategory || e.category === filterCategory));
+    const el      = document.createElement('div');
+    el.className  = 'cal-day';
+    if(dateStr === todayStr) el.classList.add('today');
+    if(dayEvs.length === 1) el.classList.add('has-event');
+    if(dayEvs.length > 1)  { el.classList.add('has-event','multi') }
+    el.textContent = d;
+    if(dayEvs.length){
+      el.title = dayEvs.map(e=>e.title).join(', ');
+      el.addEventListener('click', ()=>{ filterDate = dateStr; renderList(); });
+    }
+    grid.appendChild(el);
+  }
+
+  // giorni mese successivo
+  const total = startDow + daysInMonth;
+  const trailing = total % 7 === 0 ? 0 : 7 - (total % 7);
+  for(let d = 1; d <= trailing; d++){
+    const el = document.createElement('div');
+    el.className = 'cal-day other-month';
+    el.textContent = d;
+    grid.appendChild(el);
+  }
+}
+
+document.getElementById('prevMonth').onclick = ()=>{
+  calMonth--; if(calMonth<0){calMonth=11;calYear--}
+  filterDate=null; renderCal(); renderList();
+};
+document.getElementById('nextMonth').onclick = ()=>{
+  calMonth++; if(calMonth>11){calMonth=0;calYear++}
+  filterDate=null; renderCal(); renderList();
+};
+
+// ── LISTA ────────────────────────────────────────────
+function renderList(){
+  const list  = document.getElementById('eventsList');
+  const label = document.getElementById('eventsLabel');
+  const count = document.getElementById('eventsCount');
+  list.innerHTML = '';
+
+  let shown = [...events];
+
+  if(filterCategory) shown = shown.filter(e => e.category === filterCategory);
+
+  if(filterDate){
+    shown = shown.filter(e => e.date === filterDate);
+    label.textContent = 'Escursioni del ' + formatDateLong(filterDate);
+  } else {
+    // mostra dal mese corrente in poi, ordinate
+    const monthStart = `${calYear}-${String(calMonth+1).padStart(2,'0')}-01`;
+    shown = shown.filter(e => e.date >= monthStart).sort((a,b)=>a.date.localeCompare(b.date));
+    label.textContent = 'Prossime escursioni';
+  }
+
+  count.textContent = shown.length ? shown.length + (shown.length===1?' escursione':' escursioni') : '';
+
+  if(!shown.length){
+    const el = document.createElement('div');
+    el.className = 'no-events';
+    el.textContent = filterDate ? 'Nessuna escursione in questa data.' : (filterCategory ? 'Nessuna escursione di questa categoria in programma.' : 'Nessuna escursione in programma.');
+    // link per tornare a tutti
+    if(filterDate){
+      const btn = document.createElement('div');
+      btn.style.cssText='margin-top:.8rem;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);cursor:pointer';
+      btn.textContent='← Mostra tutte';
+      btn.onclick=()=>{filterDate=null;renderList()};
+      el.appendChild(btn);
+    }
+    list.appendChild(el);
+    return;
+  }
+
+  shown.forEach(ev => {
+    const d   = new Date(ev.date+'T12:00:00');
+    const day = String(d.getDate()).padStart(2,'0');
+    const mon = MONS_SHORT[d.getMonth()];
+
+    const card = document.createElement('div');
+    card.className = 'event-card';
+    const tags = ev.tags ? ev.tags.split(',').map(t=>t.trim()).filter(Boolean) : [];
+    const photos = ev.images || [];
+    card.innerHTML = `
+      <div class="event-date-block">
+        <div class="event-day">${day}</div>
+        <div class="event-mon">${mon}</div>
+      </div>
+      <div class="event-body">
+        ${ev.category && CAT_INFO[ev.category] ? `<span class="event-cat cat-${ev.category}">${CAT_INFO[ev.category].label}</span>` : ''}
+        <div class="event-title">${ev.title}</div>
+        ${photos.length ? `<div class="event-photos">${photos.map(src=>`<div class="event-photo"><img src="${src}" alt=""></div>`).join('')}</div>` : ''}
+        ${ev.desc ? `<div class="event-desc">${ev.desc}</div>` : ''}
+        ${tags.length ? `<div class="event-tags">${tags.map(t=>`<span class="event-tag">${t}</span>`).join('')}</div>` : ''}
+      </div>`;
+    list.appendChild(card);
+  });
+
+  if(filterDate){
+    const btn = document.createElement('div');
+    btn.style.cssText='margin-top:.5rem;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);cursor:pointer;text-align:center';
+    btn.textContent='← Mostra tutte';
+    btn.onclick=()=>{filterDate=null;renderList()};
+    list.appendChild(btn);
+  }
+}
+
+// ── UTILS ────────────────────────────────────────────
+function toDateStr(d){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function formatDateLong(str){
+  const d = new Date(str+'T12:00:00');
+  return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear();
+}
+
+// ── MOBILE ───────────────────────────────────────────
+document.getElementById('ham').onclick=()=>document.getElementById('mob').classList.add('open');
+document.getElementById('mob-close').onclick=()=>document.getElementById('mob').classList.remove('open');
+function closeMob(){document.getElementById('mob').classList.remove('open')}
+
+// ── INIT ─────────────────────────────────────────────
+// se si arriva da un link con #categoria (es. dalle card in home), pre-seleziona il filtro
+const initialCat = window.location.hash.replace('#','');
+if(initialCat && CAT_INFO[initialCat]){
+  filterCategory = initialCat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === initialCat));
+  document.getElementById('catCaption').textContent = CAT_INFO[initialCat].caption;
+}
+
+fetch('escursioni.json')
+  .then(r => r.json())
+  .then(data => { events = data; })
+  .catch(() => { events = []; })
+  .finally(() => { renderCal(); renderList(); });
+</script>
+</body>
+</html>
