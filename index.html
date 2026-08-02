@@ -27,7 +27,6 @@ html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--bark);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 img{display:block;max-width:100%}
 .card-img img{width:100%;height:100%;object-fit:cover}
-.about-photo img{width:100%;height:100%;object-fit:cover}
 
 /* ══════════════════════════════════════
    NAVBAR — sempre visibile, sempre cliccabile
@@ -138,11 +137,11 @@ nav.scrolled .hamburger span{background:var(--bark)}
 }
 .hero-overlay.show{opacity:1}
 
-.hero-tear{
-  position:absolute;bottom:-2px;left:0;right:0;
-  height:80px;overflow:hidden;z-index:4;
+.hero-fade{
+  position:absolute;bottom:-1px;left:0;right:0;
+  height:22vh;z-index:4;pointer-events:none;
+  background:linear-gradient(180deg,rgba(240,235,225,0) 0%,var(--cream) 100%);
 }
-.hero-tear svg{position:absolute;bottom:0;width:100%;height:100%}
 
 .hero-content{
   position:relative;z-index:5;
@@ -179,13 +178,13 @@ section{padding:5.5rem 3rem}
 .wrap{max-width:1180px;margin:0 auto}
 
 .intro{background:var(--cream)}
-.intro-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.intro-inner{max-width:760px;margin:0 auto;text-align:center}
 .intro-inner h2{
   font-family:var(--serif);font-weight:300;
   font-size:clamp(1.7rem,3vw,2.6rem);
   line-height:1.25;color:var(--peak);margin-bottom:1.8rem;
 }
-.botanica{margin:1rem 0 1.8rem}
+.botanica{display:inline-block;margin:1rem 0 1.8rem}
 .btn{
   display:inline-block;padding:.65rem 1.7rem;
   border:1px solid var(--bark);
@@ -219,21 +218,6 @@ section{padding:5.5rem 3rem}
 .card-label{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--peak);margin-bottom:.25rem}
 .card-sub{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--earth)}
 
-.about-sec{background:var(--cream)}
-.about-inner{display:grid;grid-template-columns:1fr 1.55fr;gap:4rem;align-items:start}
-.about-photo{aspect-ratio:.75;background:linear-gradient(160deg,#8A9E98 0%,#5C7468 50%,#3A5040 100%);display:flex;align-items:flex-end;padding:1.2rem;color:rgba(240,235,225,.45);font-size:.85rem;font-family:var(--sans);letter-spacing:.08em}
-.about-label{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:.6rem}
-.about-rule{width:36px;height:1px;background:var(--tan);margin:.7rem 0 1.1rem}
-.about-p{font-family:var(--serif);font-size:1.05rem;color:var(--earth);line-height:1.65;margin-bottom:.85rem}
-.about-p em{font-style:italic;color:var(--bark)}
-.seasons{margin-top:2.2rem;padding:1.8rem;border:1px solid var(--tan);background:var(--parchment)}
-.seasons-title{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--earth);text-align:center;margin-bottom:1.5rem}
-.seasons-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-.season{display:flex;gap:.8rem;align-items:flex-start}
-.season-ico{flex-shrink:0;margin-top:2px}
-.season-name{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--peak);margin-bottom:.25rem}
-.season-desc{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--earth);line-height:1.45}
-
 footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
 .ft-social{display:flex;gap:1rem}
 .ft-social a{color:var(--bark);text-decoration:none;transition:color .2s}
@@ -256,16 +240,12 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   .nav-center,.nav-lang{display:none}
   .hamburger{display:flex}
   section{padding:3.5rem 1.4rem}
-  .intro-inner{grid-template-columns:1fr;gap:2.5rem}
   .cards{grid-template-columns:repeat(2,1fr)}
-  .about-inner{grid-template-columns:1fr}
-  .about-photo{aspect-ratio:16/9}
   footer{flex-direction:column;align-items:center;text-align:center}
   .logo-wrap.small{left:1.4rem;width:48px}
 }
 @media(max-width:520px){
   .cards{grid-template-columns:1fr 1fr;gap:.7rem}
-  .seasons-grid{grid-template-columns:1fr}
   section{padding:2.8rem 1rem}
   .logo-wrap{width:min(260px,75vw)}
 }
@@ -286,8 +266,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   <ul class="nav-center">
     <li><a href="#intro">Scopri</a></li>
     <li><a href="#intro">Paesaggio</a></li>
-    <li><a href="#about">Chi Sono</a></li>
-    <li><a href="esperienze.html">Esperienze</a></li>
+      <li><a href="esperienze.html">Esperienze</a></li>
     <li><a href="escursioni.html">Escursioni</a></li>
     <li><a href="#footer">Contatti</a></li>
   </ul>
@@ -301,7 +280,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   <button class="mob-close" id="mob-close">✕</button>
   <a href="#intro"  onclick="closeMob()">Scopri</a>
   <a href="#intro"  onclick="closeMob()">Paesaggio</a>
-  <a href="#about"  onclick="closeMob()">Chi Sono</a>
   <a href="esperienze.html" onclick="closeMob()">Esperienze</a>
   <a href="escursioni.html" onclick="closeMob()">Escursioni</a>
   <a href="#footer" onclick="closeMob()">Contatti</a>
@@ -317,11 +295,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   <div class="hero-overlay" id="heroOverlay"></div>
   <div class="hero-mist"></div>
 
-  <div class="hero-tear">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 80 L0 40 Q30 20 55 38 Q80 55 110 30 Q140 8 170 28 Q200 48 230 22 Q260 0 295 18 Q328 36 360 15 Q392 0 420 22 Q448 42 480 18 Q510 0 545 20 Q578 40 610 16 Q642 0 672 22 Q702 44 735 20 Q768 0 800 18 Q832 36 865 14 Q895 0 928 20 Q958 40 990 16 Q1020 0 1055 18 Q1088 36 1120 14 Q1150 0 1182 20 Q1212 40 1245 18 Q1278 0 1310 18 Q1340 36 1370 14 Q1400 0 1440 18 L1440 80 Z" fill="#F0EBE1"/>
-    </svg>
-  </div>
+  <div class="hero-fade"></div>
 
   <div class="hero-content" id="heroContent">
     <p class="hero-eyebrow">Escursioni guidate sulle Alpi Orobie</p>
@@ -336,7 +310,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 <div class="wrap">
   <div class="intro-inner">
     <div class="r">
-      <h2>Non mi limito a guidare le persone in montagna. Le aiuto a capire il paesaggio che stanno attraversando.</h2>
+      <h2>"Non mi limito a guidare le persone in montagna. Le aiuto a capire il paesaggio che stanno attraversando."</h2>
       <div class="botanica">
         <svg width="130" height="44" viewBox="0 0 130 44" fill="none">
           <path d="M5 22 Q32 12 65 22 Q98 32 125 22" stroke="#C2B49A" stroke-width=".8" fill="none"/>
@@ -353,9 +327,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
         </svg>
       </div>
       <a href="#explore" class="btn">Scopri di più</a>
-    </div>
-    <div class="map-card r" style="transition-delay:.1s">
-      <img src="images/mappa1.png" alt="Mappa delle Alpi Orobie">
     </div>
   </div>
 </div>
@@ -376,34 +347,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     <a class="card r" href="escursioni.html#naturalistiche" style="transition-delay:.08s"><div class="card-img"><img src="images/botanica.jpg" alt="Primula albenensis"></div><div class="card-body"><p class="card-label">Naturalistiche</p><p class="card-sub">Botanica, geologia, fauna, fossili</p></div></a>
     <a class="card r" href="escursioni.html#micologiche" style="transition-delay:.16s"><div class="card-img"><img src="images/boletus aestivalis.jpg" alt="Funghi"></div><div class="card-body"><p class="card-label">Micologiche</p><p class="card-sub">Funghi, bosco, stagionalità</p></div></a>
     <a class="card r" href="escursioni.html#e-bike" style="transition-delay:.24s"><div class="card-img"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="14" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><circle cx="34" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><path d="M14 34 L22 18 L30 18 M22 18 L28 34 M14 34 L28 34 M28 34 L34 34" stroke="#C2B49A" stroke-width="1.2" fill="none" stroke-linejoin="round"/><path d="M18 13 L26 13" stroke="#C2B49A" stroke-width="1" opacity=".7"/><path d="M24.5 22 L21.5 27 L24.5 27 L22 32" stroke="#9C6040" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="card-body"><p class="card-label">E-Bike</p><p class="card-sub">Percorsi assistiti, per tutti</p></div></a>
-  </div>
-</div>
-</section>
-
-<!-- ABOUT + SEASONS -->
-<section class="about-sec" id="about">
-<div class="wrap">
-  <div class="about-inner">
-    <div class="r">
-      <div class="about-photo">← inserisci la tua foto qui</div>
-    </div>
-    <div class="r" style="transition-delay:.12s">
-      <p class="about-label">Chi Sono</p>
-      <div class="about-rule"></div>
-      <p class="about-p">Vivo a Clusone, ai piedi della regina delle Orobie: la Presolana.</p>
-      <p class="about-p">Tutto è cominciato con i funghi. Una decina di anni fa ho iniziato a cercarli seriamente, entrando nel gruppo micologico locale — una rete di appassionati e vecchi conoscitori del territorio che mi hanno aperto gli occhi su queste montagne. Da lì non ho più smesso di guardarmi intorno: rocce, piante, fossili, storie dimenticate. Capire quello che vedo, dare un nome alle cose e ai fenomeni, mi fa sentire parte di qualcosa di più grande. <em>Ogni sentiero racconta più di una storia.</em></p>
-      <p class="about-p">Sono Accompagnatore di Media Montagna — una qualifica professionale riconosciuta dalla legge, non una semplice passione: significa una formazione specifica in orientamento, meteorologia, primo soccorso e gestione dei gruppi, che mi abilita a guidare in sicurezza su sentieri e terreno non glaciale in ogni stagione. Suono anche il baghèt — l'antica cornamusa bergamasca — e in famiglia alleviamo alpaca, con cui organizzo passeggiate per famiglie. Di mestiere insegno elettronica alle superiori. <em>Alla fine, tutto torna sempre a queste montagne.</em></p>
-      <a href="storia.html" class="arr-link">Leggi la mia storia</a>
-      <div class="seasons">
-        <p class="seasons-title">Note di Stagione</p>
-        <div class="seasons-grid">
-          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3 Q16 9 13 15 Q10 9 13 3Z" fill="#7A8C74" opacity=".7"/><path d="M5 9 Q10 11 13 15 Q8 14 5 9Z" fill="#7A8C74" opacity=".5"/><path d="M21 9 Q16 11 13 15 Q18 14 21 9Z" fill="#7A8C74" opacity=".5"/><circle cx="13" cy="15" r="1.8" fill="#9C6040" opacity=".55"/></svg></div><div><p class="season-name">Primavera</p><p class="season-desc">Cascate, fiori selvatici e il risveglio della natura.</p></div></div>
-          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="5" fill="none" stroke="#C2B49A" stroke-width=".8"/><g stroke="#C2B49A" stroke-width=".7" opacity=".55"><line x1="13" y1="2" x2="13" y2="5.5"/><line x1="13" y1="20.5" x2="13" y2="24"/><line x1="2" y1="13" x2="5.5" y2="13"/><line x1="20.5" y1="13" x2="24" y2="13"/><line x1="4.9" y1="4.9" x2="7.5" y2="7.5"/><line x1="18.5" y1="18.5" x2="21.1" y2="21.1"/><line x1="4.9" y1="21.1" x2="7.5" y2="18.5"/><line x1="18.5" y1="7.5" x2="21.1" y2="4.9"/></g></svg></div><div><p class="season-name">Estate</p><p class="season-desc">Prati alpini, notti stellate e aria fresca.</p></div></div>
-          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4 Q17 9 15 14 L13 22 L11 14 Q9 9 13 4Z" fill="#9C6040" opacity=".55"/><path d="M7 8 Q12 10 13 14 Q9 12 7 8Z" fill="#C2B49A" opacity=".5"/><path d="M19 8 Q14 10 13 14 Q17 12 19 8Z" fill="#C2B49A" opacity=".5"/></svg></div><div><p class="season-name">Autunno</p><p class="season-desc">Larici dorati, caprioli e i colori del bosco.</p></div></div>
-          <div class="season"><div class="season-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 22 L13 5 L20 22Z" fill="none" stroke="#B0BCAA" stroke-width=".8"/><path d="M9 16 L17 16" stroke="#B0BCAA" stroke-width=".6"/><line x1="13" y1="5" x2="13" y2="2" stroke="#B0BCAA" stroke-width=".6"/><circle cx="13" cy="1.5" r=".9" fill="#B0BCAA" opacity=".5"/><g fill="#B0BCAA" opacity=".35"><circle cx="5" cy="12" r=".7"/><circle cx="9" cy="9" r=".7"/><circle cx="17" cy="9" r=".7"/><circle cx="21" cy="12" r=".7"/><circle cx="13" cy="24" r=".7"/><circle cx="8.5" cy="22" r=".7"/><circle cx="17.5" cy="22" r=".7"/></g></svg></div><div><p class="season-name">Inverno</p><p class="season-desc">Silenzio, paesaggi innevati e tracce di animali.</p></div></div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 </section>
