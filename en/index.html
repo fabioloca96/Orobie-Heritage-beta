@@ -67,7 +67,8 @@ nav.scrolled .nav-lang{color:var(--earth)}
 nav.scrolled .hamburger span{background:var(--bark)}
 
 /* ══════════════════════════════════════
-   LOGO
+   LOGO — big and centred on open,
+   fades away on scroll (no "ghost" version)
 ══════════════════════════════════════ */
 .logo-wrap{
   position:fixed;
@@ -75,21 +76,27 @@ nav.scrolled .hamburger span{background:var(--bark)}
   top:50%;left:50%;
   transform:translate(-50%,-50%);
   width:auto;
-  transition:top .55s cubic-bezier(.4,0,.2,1),
-             left .55s cubic-bezier(.4,0,.2,1),
-             width .55s cubic-bezier(.4,0,.2,1),
-             transform .55s cubic-bezier(.4,0,.2,1);
+  opacity:1;
+  transition:opacity .5s ease;
   pointer-events:all;
   cursor:pointer;
 }
 .logo-wrap img{width:100%;height:auto;display:block}
 
-.logo-wrap.small{
-  top: 20%;left:2.5rem;
-  transform:translateY(-50%);
-  width: 250px;
-  opacity: 40%;
+.logo-wrap.hide{
+  opacity:0;
+  pointer-events:none;
 }
+
+/* logo in the navbar: hidden on open, appears on scroll */
+.nav-logo{
+  display:block;
+  opacity:0;
+  transition:opacity .5s ease;
+  pointer-events:none;
+}
+.nav-logo img{height:48px;width:auto;display:block}
+.nav-logo.show{opacity:1;pointer-events:all}
 
 /* ══════════════════════════════════════
    HERO
@@ -223,7 +230,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
 .r.v{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.r,.logo-wrap,.hero-cream,.hero-overlay,.hero-content{transition:none}}
+@media(prefers-reduced-motion:reduce){.r,.logo-wrap,.nav-logo,.hero-cream,.hero-overlay,.hero-content{transition:none}}
 
 @media(max-width:960px){
   nav{padding:1rem 1.4rem}
@@ -233,7 +240,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   section{padding:3.5rem 1.4rem}
   .cards{grid-template-columns:repeat(2,1fr)}
   footer{flex-direction:column;align-items:center;text-align:center}
-  .logo-wrap.small{left:1.4rem;width:48px}
 }
 @media(max-width:520px){
   .cards{grid-template-columns:1fr 1fr;gap:.7rem}
@@ -251,7 +257,9 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 
 <!-- NAVBAR -->
 <nav id="nav">
-  <div style="width:64px"></div>
+  <a href="#" class="nav-logo" id="navLogo">
+    <img src="../images/logo1 - Copy.png" alt="Orobie Heritage">
+  </a>
 
   <ul class="nav-center">
     <li><a href="#intro">Explore</a></li>
@@ -354,6 +362,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 <script>
 const nav         = document.getElementById('nav');
 const logoWrap    = document.getElementById('logoWrap');
+const navLogo     = document.getElementById('navLogo');
 const heroCream   = document.getElementById('heroCream');
 const heroOverlay = document.getElementById('heroOverlay');
 const heroContent = document.getElementById('heroContent');
@@ -366,14 +375,16 @@ function update(){
   const y = window.scrollY;
 
   if(y < THRESHOLD){
-    logoWrap.classList.remove('small');
+    logoWrap.classList.remove('hide');
+    navLogo.classList.remove('show');
     heroCream.classList.remove('gone');
     heroOverlay.classList.remove('show');
     heroContent.classList.remove('show');
     nav.classList.remove('on-hero','scrolled');
 
   } else if(y < heroBottom() - 80){
-    logoWrap.classList.add('small');
+    logoWrap.classList.add('hide');
+    navLogo.classList.add('show');
     heroCream.classList.add('gone');
     heroOverlay.classList.add('show');
     heroContent.classList.add('show');
@@ -381,7 +392,8 @@ function update(){
     nav.classList.remove('scrolled');
 
   } else {
-    logoWrap.classList.add('small');
+    logoWrap.classList.add('hide');
+    navLogo.classList.add('show');
     heroCream.classList.add('gone');
     nav.classList.remove('on-hero');
     nav.classList.add('scrolled');
