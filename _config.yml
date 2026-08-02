@@ -5,7 +5,7 @@ contact:
   whatsapp_number: "393792279354" # <-- sostituisci con il numero vero (formato internazionale, senza + né spazi)
 
 collections:
-  escursioni:
+  eventi:
     output: false
   esperienze:
     output: false

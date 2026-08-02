@@ -1,7 +1,7 @@
 ---
 ---
 [
-  {% for ev in site.escursioni %}
+  {% for ev in site.eventi %}
   {
     "date": "{{ ev.date | date: '%Y-%m-%d' }}",
     "category": {{ ev.category | jsonify }},

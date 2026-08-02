@@ -1,7 +1,7 @@
 ---
 category: micologiche
-title: Escursione micologica
+title: Evento micologico
 images:
   - images/uploads/macrolepiota.png
-desc: una bella escursione
+desc: un bell'evento
 ---

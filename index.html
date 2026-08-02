@@ -71,31 +71,36 @@ nav.scrolled .nav-lang{color:var(--earth)}
 nav.scrolled .hamburger span{background:var(--bark)}
 
 /* ══════════════════════════════════════
-   LOGO — si muove e si rimpicciolisce
+   LOGO — grande e centrato in apertura,
+   sparisce allo scroll (nessuna versione "fantasma")
 ══════════════════════════════════════ */
 .logo-wrap{
   position:fixed;
   z-index:299;
-  /* posizione e dimensione iniziali: centrato, grande */
   top:50%;left:50%;
   transform:translate(-50%,-50%);
   width:auto;
-  transition:top .55s cubic-bezier(.4,0,.2,1),
-             left .55s cubic-bezier(.4,0,.2,1),
-             width .55s cubic-bezier(.4,0,.2,1),
-             transform .55s cubic-bezier(.4,0,.2,1);
+  opacity:1;
+  transition:opacity .5s ease;
   pointer-events:all;
   cursor:pointer;
 }
 .logo-wrap img{width:100%;height:auto;display:block}
 
-/* stato finale: in alto a sinistra, piccolo */
-.logo-wrap.small{
-  top: 20%;left:2.5rem;
-  transform:translateY(-50%);
-  width: 250px;
-  opacity: 40%;
+.logo-wrap.hide{
+  opacity:0;
+  pointer-events:none;
 }
+
+/* logo nella navbar: nascosto in apertura, compare quando si scorre */
+.nav-logo{
+  display:block;
+  opacity:0;
+  transition:opacity .5s ease;
+  pointer-events:none;
+}
+.nav-logo img{height:48px;width:auto;display:block}
+.nav-logo.show{opacity:1;pointer-events:all}
 
 /* ══════════════════════════════════════
    HERO — foto a tutto schermo
@@ -218,6 +223,22 @@ section{padding:5.5rem 3rem}
 .card-label{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--peak);margin-bottom:.25rem}
 .card-sub{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--earth)}
 
+.upcoming{background:var(--cream)}
+.upcoming-list{display:flex;flex-direction:column}
+.upcoming-row{
+  display:flex;align-items:center;gap:1.4rem;
+  padding:1rem 0;border-bottom:1px solid var(--tan);
+  text-decoration:none;color:inherit;transition:opacity .2s;
+}
+.upcoming-row:hover{opacity:.7}
+.upcoming-row:last-child{border-bottom:none}
+.upcoming-date{width:64px;flex-shrink:0;text-align:center}
+.upcoming-day{font-family:var(--serif);font-weight:300;font-size:1.7rem;color:var(--peak);line-height:1}
+.upcoming-mon{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--earth);margin-top:2px}
+.upcoming-title{flex:1;font-family:var(--serif);font-size:1.15rem;color:var(--peak)}
+.upcoming-tags{font-size:.78rem;letter-spacing:.05em;color:var(--earth);text-align:right;flex-shrink:0;max-width:240px}
+.upcoming-empty{font-family:var(--serif);font-style:italic;color:var(--sand);padding:.5rem 0}
+
 footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
 .ft-social{display:flex;gap:1rem}
 .ft-social a{color:var(--bark);text-decoration:none;transition:color .2s}
@@ -232,7 +253,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
 .r.v{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.r,.logo-wrap,.hero-cream,.hero-overlay,.hero-content{transition:none}}
+@media(prefers-reduced-motion:reduce){.r,.logo-wrap,.nav-logo,.hero-cream,.hero-overlay,.hero-content{transition:none}}
 
 @media(max-width:960px){
   nav{padding:1rem 1.4rem}
@@ -241,8 +262,8 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   .hamburger{display:flex}
   section{padding:3.5rem 1.4rem}
   .cards{grid-template-columns:repeat(2,1fr)}
+  .upcoming-tags{display:none}
   footer{flex-direction:column;align-items:center;text-align:center}
-  .logo-wrap.small{left:1.4rem;width:48px}
 }
 @media(max-width:520px){
   .cards{grid-template-columns:1fr 1fr;gap:.7rem}
@@ -260,14 +281,16 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 
 <!-- NAVBAR (sempre cliccabile) -->
 <nav id="nav">
-  <!-- spazio vuoto a sinistra: il logo fisso ci si sovrappone -->
-  <div style="width:64px"></div>
+  <!-- logo navbar: compare solo dopo lo scroll -->
+  <a href="#" class="nav-logo" id="navLogo">
+    <img src="images/logo1 - Copy.png" alt="Orobie Heritage">
+  </a>
 
   <ul class="nav-center">
     <li><a href="#intro">Scopri</a></li>
     <li><a href="#intro">Paesaggio</a></li>
       <li><a href="esperienze.html">Esperienze</a></li>
-    <li><a href="escursioni.html">Escursioni</a></li>
+    <li><a href="eventi.html">Eventi</a></li>
     <li><a href="#footer">Contatti</a></li>
   </ul>
 
@@ -281,7 +304,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   <a href="#intro"  onclick="closeMob()">Scopri</a>
   <a href="#intro"  onclick="closeMob()">Paesaggio</a>
   <a href="esperienze.html" onclick="closeMob()">Esperienze</a>
-  <a href="escursioni.html" onclick="closeMob()">Escursioni</a>
+  <a href="eventi.html" onclick="closeMob()">Eventi</a>
   <a href="#footer" onclick="closeMob()">Contatti</a>
 </div>
 
@@ -298,7 +321,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   <div class="hero-fade"></div>
 
   <div class="hero-content" id="heroContent">
-    <p class="hero-eyebrow">Escursioni guidate sulle Alpi Orobie</p>
+    <p class="hero-eyebrow">Eventi guidati sulle Alpi Orobie</p>
     <h1 class="hero-title">Orobie Heritage</h1>
     <div class="hero-divider"></div>
     <p class="hero-tag"><em>Natura, storie e luoghi nascosti<br>delle montagne orobiche.</em></p>
@@ -343,10 +366,26 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     </div>
   </div>
   <div class="cards">
-    <a class="card r" href="escursioni.html#in-vetta"><div class="card-img"><img src="images/vette.jpg" alt="vette"></div><div class="card-body"><p class="card-label">In Vetta</p><p class="card-sub">Cime, creste, dislivello</p></div></a>
-    <a class="card r" href="escursioni.html#naturalistiche" style="transition-delay:.08s"><div class="card-img"><img src="images/botanica.jpg" alt="Primula albenensis"></div><div class="card-body"><p class="card-label">Naturalistiche</p><p class="card-sub">Botanica, geologia, fauna, fossili</p></div></a>
-    <a class="card r" href="escursioni.html#micologiche" style="transition-delay:.16s"><div class="card-img"><img src="images/boletus aestivalis.jpg" alt="Funghi"></div><div class="card-body"><p class="card-label">Micologiche</p><p class="card-sub">Funghi, bosco, stagionalità</p></div></a>
-    <a class="card r" href="escursioni.html#e-bike" style="transition-delay:.24s"><div class="card-img"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="14" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><circle cx="34" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><path d="M14 34 L22 18 L30 18 M22 18 L28 34 M14 34 L28 34 M28 34 L34 34" stroke="#C2B49A" stroke-width="1.2" fill="none" stroke-linejoin="round"/><path d="M18 13 L26 13" stroke="#C2B49A" stroke-width="1" opacity=".7"/><path d="M24.5 22 L21.5 27 L24.5 27 L22 32" stroke="#9C6040" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="card-body"><p class="card-label">E-Bike</p><p class="card-sub">Percorsi assistiti, per tutti</p></div></a>
+    <a class="card r" href="eventi.html#in-vetta"><div class="card-img"><img src="images/vette.jpg" alt="vette"></div><div class="card-body"><p class="card-label">In Vetta</p><p class="card-sub">Cime, creste, dislivello</p></div></a>
+    <a class="card r" href="eventi.html#naturalistiche" style="transition-delay:.08s"><div class="card-img"><img src="images/botanica.jpg" alt="Primula albenensis"></div><div class="card-body"><p class="card-label">Naturalistiche</p><p class="card-sub">Botanica, geologia, fauna, fossili</p></div></a>
+    <a class="card r" href="eventi.html#micologiche" style="transition-delay:.16s"><div class="card-img"><img src="images/boletus aestivalis.jpg" alt="Funghi"></div><div class="card-body"><p class="card-label">Micologiche</p><p class="card-sub">Funghi, bosco, stagionalità</p></div></a>
+    <a class="card r" href="eventi.html#e-bike" style="transition-delay:.24s"><div class="card-img"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="14" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><circle cx="34" cy="34" r="7" stroke="#C2B49A" stroke-width="1.2" fill="none"/><path d="M14 34 L22 18 L30 18 M22 18 L28 34 M14 34 L28 34 M28 34 L34 34" stroke="#C2B49A" stroke-width="1.2" fill="none" stroke-linejoin="round"/><path d="M18 13 L26 13" stroke="#C2B49A" stroke-width="1" opacity=".7"/><path d="M24.5 22 L21.5 27 L24.5 27 L22 32" stroke="#9C6040" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="card-body"><p class="card-label">E-Bike</p><p class="card-sub">Percorsi assistiti, per tutti</p></div></a>
+  </div>
+</div>
+</section>
+
+<!-- PROSSIMI EVENTI -->
+<section class="upcoming" id="upcoming">
+<div class="wrap">
+  <div class="explore-top">
+    <div class="eyebrow r">Calendario</div>
+    <div class="explore-right r" style="transition-delay:.1s">
+      Le prossime uscite in programma.
+      <br><a class="arr-link" href="eventi.html">Vedi tutti gli eventi</a>
+    </div>
+  </div>
+  <div class="upcoming-list r" id="upcomingList">
+    <p class="upcoming-empty">Caricamento eventi…</p>
   </div>
 </div>
 </section>
@@ -364,6 +403,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 <script>
 const nav         = document.getElementById('nav');
 const logoWrap    = document.getElementById('logoWrap');
+const navLogo     = document.getElementById('navLogo');
 const heroCream   = document.getElementById('heroCream');
 const heroOverlay = document.getElementById('heroOverlay');
 const heroContent = document.getElementById('heroContent');
@@ -378,16 +418,18 @@ function update(){
   const y = window.scrollY;
 
   if(y < THRESHOLD){
-    /* ── FASE 1: logo enorme centrato, sfondo crema, navbar link scuri ── */
-    logoWrap.classList.remove('small');
+    /* ── FASE 1: logo grande centrato intatto, sfondo crema, navbar link scuri ── */
+    logoWrap.classList.remove('hide');
+    navLogo.classList.remove('show');
     heroCream.classList.remove('gone');
     heroOverlay.classList.remove('show');
     heroContent.classList.remove('show');
     nav.classList.remove('on-hero','scrolled');
 
   } else if(y < heroBottom() - 80){
-    /* ── FASE 2: logo piccolo in alto, foto visibile, link bianchi ── */
-    logoWrap.classList.add('small');
+    /* ── FASE 2: logo grande sparito, logo navbar comparso, foto visibile, link bianchi ── */
+    logoWrap.classList.add('hide');
+    navLogo.classList.add('show');
     heroCream.classList.add('gone');
     heroOverlay.classList.add('show');
     heroContent.classList.add('show');
@@ -396,7 +438,8 @@ function update(){
 
   } else {
     /* ── FASE 3: sotto l'hero, navbar crema ── */
-    logoWrap.classList.add('small');
+    logoWrap.classList.add('hide');
+    navLogo.classList.add('show');
     heroCream.classList.add('gone');
     nav.classList.remove('on-hero');
     nav.classList.add('scrolled');
@@ -412,6 +455,46 @@ function closeMob(){ document.getElementById('mob').classList.remove('open') }
 
 const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('v')), {threshold:.1});
 document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+// ── PROSSIMI EVENTI (anteprima calendario, dati da eventi.json) ──
+const MONS_SHORT = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+function toDateStr(d){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+fetch('eventi.json')
+  .then(r => r.json())
+  .then(data => {
+    const todayStr = toDateStr(new Date());
+    const upcoming = data
+      .filter(ev => ev.date >= todayStr)
+      .sort((a,b) => a.date.localeCompare(b.date))
+      .slice(0,4);
+
+    const list = document.getElementById('upcomingList');
+    if(!upcoming.length){
+      list.innerHTML = '<p class="upcoming-empty">Nessun evento in programma al momento.</p>';
+      return;
+    }
+
+    list.innerHTML = upcoming.map(ev => {
+      const d   = new Date(ev.date+'T12:00:00');
+      const day = String(d.getDate()).padStart(2,'0');
+      const mon = MONS_SHORT[d.getMonth()];
+      const tags = ev.tags ? ev.tags.split(',').map(t=>t.trim()).filter(Boolean).join(' · ') : '';
+      return `
+        <a class="upcoming-row" href="eventi.html${ev.category ? '#'+ev.category : ''}">
+          <div class="upcoming-date">
+            <div class="upcoming-day">${day}</div>
+            <div class="upcoming-mon">${mon}</div>
+          </div>
+          <div class="upcoming-title">${ev.title}</div>
+          <div class="upcoming-tags">${tags}</div>
+        </a>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('upcomingList').innerHTML = '<p class="upcoming-empty">Nessun evento in programma al momento.</p>';
+  });
 </script>
 </body>
 </html>

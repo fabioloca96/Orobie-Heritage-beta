@@ -12,10 +12,10 @@ media_folder: "images/uploads"
 public_folder: "images/uploads"
 
 collections:
-  - name: "escursioni"
-    label: "Escursioni"
-    label_singular: "Escursione"
-    folder: "_escursioni"
+  - name: "eventi"
+    label: "Eventi"
+    label_singular: "Evento"
+    folder: "_eventi"
     create: true
     delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
