@@ -1,0 +1,218 @@
+---
+---
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }} – Orobie Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F0EBE1;--parchment:#E8E1D5;--tan:#D4C8B4;
+  --sand:#C2B49A;--earth:#8C7A62;--bark:#5A4A36;
+  --peak:#2E2416;--rust:#9C6040;--sage:#7A8C74;
+  --slate:#6E8B95;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--bark);font-family:var(--sans);font-weight:300;min-height:100vh}
+img{display:block;max-width:100%}
+
+/* lingua: mostra IT di default, EN quando body ha .lang-en */
+[data-lang="en"]{display:none}
+body.lang-en [data-lang="it"]{display:none}
+body.lang-en [data-lang="en"]{display:inline}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.3rem 2.5rem;
+  background:rgba(240,235,225,.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--tan);
+}
+.nav-logo{text-decoration:none}
+.nav-logo img{height:48px;width:auto}
+.nav-center{display:flex;gap:2rem;list-style:none}
+.nav-center a{font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--bark);text-decoration:none;transition:color .2s}
+.nav-center a:hover{color:var(--rust)}
+.nav-lang{font-size:.85rem;letter-spacing:.12em;color:var(--earth);text-decoration:none;background:none;border:none;cursor:pointer;font-family:var(--sans)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--bark)}
+
+/* ── DETTAGLIO EVENTO ── */
+.ev-wrap{max-width:820px;margin:0 auto;padding:3.5rem 3rem 5rem}
+.ev-back{
+  display:inline-block;margin-bottom:1.6rem;
+  font-family:var(--sans);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--bark);text-decoration:none;
+}
+.ev-back:hover{color:var(--rust)}
+.ev-back::before{content:'← '}
+.ev-cat{
+  display:inline-block;font-family:var(--sans);
+  font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.3rem .7rem;margin-bottom:.9rem;color:#fff;
+}
+.ev-cat.cat-in-vetta{background:var(--rust)}
+.ev-cat.cat-naturalistiche{background:var(--sage)}
+.ev-cat.cat-micologiche{background:var(--earth)}
+.ev-cat.cat-e-bike{background:var(--slate)}
+.ev-title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  color:var(--peak);line-height:1.05;margin-bottom:.6rem;
+}
+.ev-date{
+  font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--rust);margin-bottom:2rem;
+}
+.ev-photos{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.ev-photo{flex:1 1 260px;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--tan);background:var(--parchment)}
+.ev-photo img{width:100%;height:100%;object-fit:cover}
+.ev-desc{
+  font-family:var(--serif);font-size:1.15rem;color:var(--earth);
+  line-height:1.7;margin-bottom:1.8rem;
+}
+.ev-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.ev-tag{
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.35rem .8rem;background:var(--parchment);
+  border:1px solid var(--tan);color:var(--earth);
+}
+.btn{
+  display:inline-block;padding:.75rem 1.9rem;
+  border:1px solid var(--bark);
+  font-family:var(--sans);font-size:.8rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bark);text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.btn:hover{background:var(--bark);color:var(--cream)}
+
+footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+.ft-center{font-size:.82rem;letter-spacing:.07em;color:var(--earth)}
+.ft-right{font-size:.78rem;color:var(--sand);letter-spacing:.06em}
+
+@media(max-width:900px){
+  nav{padding:.3rem 1.4rem}
+  .nav-logo img{height:48px}
+  .nav-center{display:none}
+  .hamburger{display:flex}
+  .ev-wrap{padding:2.5rem 1.4rem 3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <img src="/images/logo1 - Copy.png" alt="Orobie Heritage">
+  </a>
+  <ul class="nav-center">
+    <li><a href="/index.html#intro"><span data-lang="it">Scopri</span><span data-lang="en">Explore</span></a></li>
+    <li><a href="/esperienze.html"><span data-lang="it">Esperienze</span><span data-lang="en">Experiences</span></a></li>
+    <li><a href="/eventi.html"><span data-lang="it">Eventi</span><span data-lang="en">Events</span></a></li>
+    <li><a href="/index.html#footer"><span data-lang="it">Contatti</span><span data-lang="en">Contact</span></a></li>
+  </ul>
+  <button class="nav-lang" id="langToggle"><span data-lang="it">EN</span><span data-lang="en">IT</span></button>
+</nav>
+
+<div class="ev-wrap">
+  <a href="/eventi.html" class="ev-back">
+    <span data-lang="it">Torna al calendario</span>
+    <span data-lang="en">Back to calendar</span>
+  </a>
+
+  {% case page.category %}
+    {% when 'in-vetta' %}{% assign cat_it = 'In Vetta' %}{% assign cat_en = 'Summit Routes' %}
+    {% when 'naturalistiche' %}{% assign cat_it = 'Naturalistiche' %}{% assign cat_en = 'Nature Walks' %}
+    {% when 'micologiche' %}{% assign cat_it = 'Micologiche' %}{% assign cat_en = 'Mushroom Foraging' %}
+    {% when 'e-bike' %}{% assign cat_it = 'E-Bike' %}{% assign cat_en = 'E-Bike' %}
+  {% endcase %}
+  {% if page.category %}
+  <div class="ev-cat cat-{{ page.category }}">
+    <span data-lang="it">{{ cat_it }}</span><span data-lang="en">{{ cat_en }}</span>
+  </div>
+  {% endif %}
+
+  {% assign title_en = page.title_en | default: page.title %}
+  <h1 class="ev-title">
+    <span data-lang="it">{{ page.title }}</span>
+    <span data-lang="en">{{ title_en }}</span>
+  </h1>
+
+  {% assign m = page.date | date: "%-m" %}
+  {% case m %}
+    {% when '1' %}{% assign mon_it='Gennaio' %}{% assign mon_en='January' %}
+    {% when '2' %}{% assign mon_it='Febbraio' %}{% assign mon_en='February' %}
+    {% when '3' %}{% assign mon_it='Marzo' %}{% assign mon_en='March' %}
+    {% when '4' %}{% assign mon_it='Aprile' %}{% assign mon_en='April' %}
+    {% when '5' %}{% assign mon_it='Maggio' %}{% assign mon_en='May' %}
+    {% when '6' %}{% assign mon_it='Giugno' %}{% assign mon_en='June' %}
+    {% when '7' %}{% assign mon_it='Luglio' %}{% assign mon_en='July' %}
+    {% when '8' %}{% assign mon_it='Agosto' %}{% assign mon_en='August' %}
+    {% when '9' %}{% assign mon_it='Settembre' %}{% assign mon_en='September' %}
+    {% when '10' %}{% assign mon_it='Ottobre' %}{% assign mon_en='October' %}
+    {% when '11' %}{% assign mon_it='Novembre' %}{% assign mon_en='November' %}
+    {% when '12' %}{% assign mon_it='Dicembre' %}{% assign mon_en='December' %}
+  {% endcase %}
+  <p class="ev-date">
+    <span data-lang="it">{{ page.date | date: "%-d" }} {{ mon_it }} {{ page.date | date: "%Y" }}</span>
+    <span data-lang="en">{{ mon_en }} {{ page.date | date: "%-d" }}, {{ page.date | date: "%Y" }}</span>
+  </p>
+
+  {% if page.images and page.images.size > 0 %}
+  <div class="ev-photos">
+    {% for img in page.images %}
+    <div class="ev-photo"><img src="/{{ img }}" alt=""></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% assign desc_en = page.desc_en | default: page.desc %}
+  {% if page.desc %}
+  <p class="ev-desc">
+    <span data-lang="it">{{ page.desc }}</span>
+    <span data-lang="en">{{ desc_en }}</span>
+  </p>
+  {% endif %}
+
+  {% assign tags_en = page.tag_list_en | default: page.tag_list %}
+  {% if page.tag_list %}
+  <div class="ev-tags" data-lang="it">
+    {% assign tag_arr = page.tag_list | split: ',' %}
+    {% for t in tag_arr %}<span class="ev-tag">{{ t | strip }}</span>{% endfor %}
+  </div>
+  <div class="ev-tags" data-lang="en">
+    {% assign tag_arr_en = tags_en | split: ',' %}
+    {% for t in tag_arr_en %}<span class="ev-tag">{{ t | strip }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% assign wa_text_it = "Ciao! Vorrei prenotare: " | append: page.title %}
+  {% assign wa_text_en = "Hi! I'd like to book: " | append: title_en %}
+  <a class="btn" data-lang="it" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_text_it | uri_escape }}" target="_blank" rel="noopener noreferrer">Prenota su WhatsApp</a>
+  <a class="btn" data-lang="en" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_text_en | uri_escape }}" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+</div>
+
+<footer>
+  <p class="ft-center">Orobie Heritage – Guida di Montagna e Natura</p>
+  <p class="ft-right">© 2026 Tutti i diritti riservati</p>
+</footer>
+
+<script>
+const body = document.body;
+const btn = document.getElementById('langToggle');
+if(localStorage.getItem('oh-lang') === 'en') body.classList.add('lang-en');
+btn.onclick = () => {
+  body.classList.toggle('lang-en');
+  localStorage.setItem('oh-lang', body.classList.contains('lang-en') ? 'en' : 'it');
+};
+</script>
+</body>
+</html>

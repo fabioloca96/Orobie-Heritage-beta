@@ -170,8 +170,10 @@ nav{
   padding:1.2rem 1.4rem;
   display:grid;grid-template-columns:56px 1fr;
   gap:1rem;align-items:start;
+  text-decoration:none;color:inherit;
   transition:border-color .2s;
 }
+a.event-card{cursor:pointer}
 .event-card:hover{border-color:var(--earth)}
 .event-date-block{
   text-align:center;
@@ -253,7 +255,6 @@ nav{
   </a>
   <ul class="nav-center">
     <li><a href="index.html#intro">Explore</a></li>
-    <li><a href="index.html#intro">Landscape</a></li>
     <li><a href="experiences.html">Experiences</a></li>
     <li><a href="events.html" class="active">Events</a></li>
     <li><a href="visit.html">Visit</a></li>
@@ -472,8 +473,9 @@ function renderList(){
     const day = String(d.getDate()).padStart(2,'0');
     const mon = MONS_SHORT[d.getMonth()];
 
-    const card = document.createElement('div');
+    const card = document.createElement(ev.url ? 'a' : 'div');
     card.className = 'event-card';
+    if(ev.url) card.href = ev.url;
     const tags = ev.tagsEn ? ev.tagsEn.split(',').map(t=>t.trim()).filter(Boolean) : [];
     const photos = ev.images || [];
     card.innerHTML = `

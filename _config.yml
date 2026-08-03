@@ -1,14 +1,27 @@
 title: Orobie Heritage
 description: Guided walks and nature stories in the Orobie Alps
 
+# senza questo, Jekyll nasconde di default gli eventi con data futura
+# (è pensato per i post di blog programmati, ma qui gli eventi futuri
+# sono il contenuto principale del calendario)
+future: true
+
 contact:
   whatsapp_number: "393792279354" # <-- sostituisci con il numero vero (formato internazionale, senza + né spazi)
 
 collections:
   eventi:
-    output: false
+    output: true
+    permalink: /eventi/:path.html
   esperienze:
     output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: "eventi"
+    values:
+      layout: "evento"
 
 exclude:
   - "ALL.1 richiesta autorizzazione libera professione.doc"

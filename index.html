@@ -288,7 +288,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 
   <ul class="nav-center">
     <li><a href="#intro">Scopri</a></li>
-    <li><a href="#intro">Paesaggio</a></li>
       <li><a href="esperienze.html">Esperienze</a></li>
     <li><a href="eventi.html">Eventi</a></li>
     <li><a href="#footer">Contatti</a></li>
@@ -302,7 +301,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 <div class="mob-menu" id="mob">
   <button class="mob-close" id="mob-close">✕</button>
   <a href="#intro"  onclick="closeMob()">Scopri</a>
-  <a href="#intro"  onclick="closeMob()">Paesaggio</a>
   <a href="esperienze.html" onclick="closeMob()">Esperienze</a>
   <a href="eventi.html" onclick="closeMob()">Eventi</a>
   <a href="#footer" onclick="closeMob()">Contatti</a>
@@ -482,7 +480,7 @@ fetch('eventi.json')
       const mon = MONS_SHORT[d.getMonth()];
       const tags = ev.tags ? ev.tags.split(',').map(t=>t.trim()).filter(Boolean).join(' · ') : '';
       return `
-        <a class="upcoming-row" href="eventi.html${ev.category ? '#'+ev.category : ''}">
+        <a class="upcoming-row" href="${ev.url || ('eventi.html' + (ev.category ? '#'+ev.category : ''))}">
           <div class="upcoming-date">
             <div class="upcoming-day">${day}</div>
             <div class="upcoming-mon">${mon}</div>
