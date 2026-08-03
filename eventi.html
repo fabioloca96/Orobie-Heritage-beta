@@ -478,7 +478,7 @@ function renderList(){
 
     const card = document.createElement(ev.url ? 'a' : 'div');
     card.className = 'event-card';
-    if(ev.url) card.href = ev.url;
+    if(ev.url) card.href = ev.url.replace(/^\//, '');
     const tags = ev.tags ? ev.tags.split(',').map(t=>t.trim()).filter(Boolean) : [];
     const photos = ev.images || [];
     card.innerHTML = `
