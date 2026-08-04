@@ -1,11 +1,11 @@
 backend:
   name: github
-  repo: fabioloca96/Orobie-Heritage
-  branch: main
+  repo: fabioloca96/Orobie-Heritage-beta
+  branch: master
   base_url: https://orobie-cms-oauth.fabio-locatelli-1bl.workers.dev
 
-site_url: https://fabioloca96.github.io/Orobie-Heritage
-display_url: https://fabioloca96.github.io/Orobie-Heritage
+site_url: https://www.orobie-heritage.com
+display_url: https://www.orobie-heritage.com
 publish_mode: simple
 
 media_folder: "images/uploads"

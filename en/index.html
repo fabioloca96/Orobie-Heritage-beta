@@ -6,6 +6,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orobie Heritage – Mountain & Nature Guide</title>
+<meta name="description" content="Guided hikes and nature stories in the Orobie Alps with a certified mountain guide (Accompagnatore di Media Montagna). Discover experiences and events in the heart of the Orobie.">
+<link rel="canonical" href="{{ site.url }}/en/index.html">
+<link rel="alternate" hreflang="it" href="{{ site.url }}/index.html">
+<link rel="alternate" hreflang="en" href="{{ site.url }}/en/index.html">
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/index.html">
+<link rel="icon" href="{{ site.url }}/images/logo1.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Orobie Heritage – Mountain & Nature Guide">
+<meta property="og:description" content="Guided hikes and nature stories in the Orobie Alps with a certified mountain guide (Accompagnatore di Media Montagna).">
+<meta property="og:url" content="{{ site.url }}/en/index.html">
+<meta property="og:image" content="{{ site.url }}/images/hero.jpg">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Orobie Heritage">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Orobie Heritage – Mountain & Nature Guide">
+<meta name="twitter:description" content="Guided hikes and nature stories in the Orobie Alps with a certified mountain guide (Accompagnatore di Media Montagna).">
+<meta name="twitter:image" content="{{ site.url }}/images/hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Orobie Heritage",
+  "description": "Guided hikes and nature stories in the Orobie Alps with a certified mountain guide (Accompagnatore di Media Montagna).",
+  "url": "{{ site.url }}/en/index.html",
+  "image": "{{ site.url }}/images/hero.jpg",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Orobie Alps, Lombardy, Italy"
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -44,7 +75,13 @@ nav{
   color:var(--bark);
 }
 .nav-center a:hover{color:var(--rust)}
-.nav-lang{font-size:.85rem;letter-spacing:.12em;color:var(--earth);transition:color .3s;text-decoration:none}
+.nav-lang{
+  display:flex;align-items:center;gap:.35rem;
+  font-size:.85rem;letter-spacing:.06em;font-weight:500;
+  color:var(--earth);text-decoration:none;
+  padding:.3rem .7rem;border:1px solid var(--tan);border-radius:20px;
+  transition:color .3s,border-color .3s;
+}
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--bark);transition:background .3s}
 
@@ -53,7 +90,7 @@ nav.on-hero{
 }
 nav.on-hero .nav-center a{color:#F0EBE1;text-shadow:0 1px 3px rgba(0,0,0,.45)}
 nav.on-hero .nav-center a:hover{color:var(--sand)}
-nav.on-hero .nav-lang{color:rgba(240,235,225,.85);text-shadow:0 1px 3px rgba(0,0,0,.45)}
+nav.on-hero .nav-lang{color:rgba(240,235,225,.85);text-shadow:0 1px 3px rgba(0,0,0,.45);border-color:rgba(240,235,225,.5)}
 nav.on-hero .hamburger span{background:#F0EBE1;box-shadow:0 1px 2px rgba(0,0,0,.45)}
 
 nav.scrolled{
@@ -63,7 +100,7 @@ nav.scrolled{
   padding:.8rem 2.5rem;
 }
 nav.scrolled .nav-center a{color:var(--bark)}
-nav.scrolled .nav-lang{color:var(--earth)}
+nav.scrolled .nav-lang{color:var(--earth);border-color:var(--tan)}
 nav.scrolled .hamburger span{background:var(--bark)}
 
 /* ══════════════════════════════════════
@@ -169,6 +206,21 @@ nav.scrolled .hamburger span{background:var(--bark)}
   line-height:1.5;opacity:1;color:var(--peak);
 }
 
+.scroll-hint{
+  position:absolute;left:50%;bottom:1.8rem;
+  transform:translate(-50%,0);
+  z-index:6;display:flex;flex-direction:column;align-items:center;gap:.3rem;
+  color:var(--peak);text-decoration:none;
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  animation:scrollHintBounce 2s ease-in-out infinite;
+}
+.scroll-hint-arrow{font-size:1.4rem;line-height:1}
+@keyframes scrollHintBounce{
+  0%,100%{transform:translate(-50%,0)}
+  50%{transform:translate(-50%,8px)}
+}
+@media(prefers-reduced-motion:reduce){.scroll-hint{animation:none}}
+
 /* ══════════════════════════════════════
    SECTIONS
 ══════════════════════════════════════ */
@@ -235,7 +287,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 @media(max-width:960px){
   nav{padding:1rem 1.4rem}
   nav.scrolled{padding:.7rem 1.4rem}
-  .nav-center,.nav-lang{display:none}
+  .nav-center{display:none}
   .hamburger{display:flex}
   section{padding:3.5rem 1.4rem}
   .cards{grid-template-columns:repeat(2,1fr)}
@@ -269,7 +321,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     <li><a href="#footer">Contact</a></li>
   </ul>
 
-  <a href="../index.html" class="nav-lang">IT</a>
+  <a href="../index.html" class="nav-lang">🇮🇹 IT</a>
   <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
 </nav>
 
@@ -299,6 +351,11 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     <div class="hero-divider"></div>
     <p class="hero-tag"><em>Nature, stories and hidden places<br>of the Orobie mountains.</em></p>
   </div>
+
+  <a href="#intro" class="scroll-hint" aria-label="Scroll to discover more">
+    <span>Scroll</span>
+    <span class="scroll-hint-arrow">↓</span>
+  </a>
 </div>
 
 <!-- INTRO / MAP -->

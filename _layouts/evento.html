@@ -6,6 +6,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ page.title }} – Orobie Heritage</title>
+{% if page.images and page.images.size > 0 %}{% assign ev_image_path = page.images[0] %}{% else %}{% assign ev_image_path = "images/hero.jpg" %}{% endif %}
+<meta name="description" content="{{ page.desc | strip_html }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<link rel="icon" href="{{ site.url }}/images/logo1.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }} – Orobie Heritage">
+<meta property="og:description" content="{{ page.desc | strip_html }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/{{ ev_image_path }}">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Orobie Heritage">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }} – Orobie Heritage">
+<meta name="twitter:description" content="{{ page.desc | strip_html }}">
+<meta name="twitter:image" content="{{ site.url }}/{{ ev_image_path }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.desc | jsonify }},
+  "startDate": "{{ page.date | date: '%Y-%m-%d' }}",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "image": ["{{ site.url }}/{{ ev_image_path }}"],
+  "url": "{{ site.url }}{{ page.url }}",
+  "location": {
+    "@type": "Place",
+    "name": "Alpi Orobie",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Lombardia",
+      "addressCountry": "IT"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Orobie Heritage",
+    "url": "{{ site.url }}/index.html"
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -39,7 +81,15 @@ nav{
 .nav-center{display:flex;gap:2rem;list-style:none}
 .nav-center a{font-size:1.1rem;letter-spacing:.15em;text-transform:uppercase;color:var(--bark);text-decoration:none;transition:color .2s}
 .nav-center a:hover{color:var(--rust)}
-.nav-lang{font-size:.85rem;letter-spacing:.12em;color:var(--earth);text-decoration:none;background:none;border:none;cursor:pointer;font-family:var(--sans)}
+.nav-lang{
+  display:flex;align-items:center;gap:.35rem;
+  font-size:.85rem;letter-spacing:.06em;font-weight:500;
+  color:var(--bark);text-decoration:none;font-family:var(--sans);
+  padding:.3rem .7rem;border:1px solid var(--tan);border-radius:20px;
+  background:none;cursor:pointer;
+  transition:color .2s,border-color .2s;
+}
+.nav-lang:hover{border-color:var(--rust);color:var(--rust)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--bark)}
 
@@ -119,7 +169,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     <li><a href="../eventi.html"><span data-lang="it">Eventi</span><span data-lang="en">Events</span></a></li>
     <li><a href="../index.html#footer"><span data-lang="it">Contatti</span><span data-lang="en">Contact</span></a></li>
   </ul>
-  <button class="nav-lang" id="langToggle"><span data-lang="it">EN</span><span data-lang="en">IT</span></button>
+  <button class="nav-lang" id="langToggle"><span data-lang="it">🇬🇧 EN</span><span data-lang="en">🇮🇹 IT</span></button>
 </nav>
 
 <div class="ev-wrap">
