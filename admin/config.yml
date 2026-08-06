@@ -20,7 +20,7 @@ collections:
     delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Data", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true}
       - {label: "Categoria", name: "category", widget: "select", options: [{label: "In Vetta", value: "in-vetta"}, {label: "Naturalistiche", value: "naturalistiche"}, {label: "Micologiche", value: "micologiche"}, {label: "E-Bike", value: "e-bike"}]}
       - {label: "Titolo", name: "title", widget: "string"}
       - {label: "Title (EN)", name: "title_en", widget: "string", required: false}
