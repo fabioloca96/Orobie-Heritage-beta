@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Events – Orobie Heritage</title>
-<meta name="description" content="Calendar of guided hikes and events in the Orobie Alps: nature walks, mushroom foraging, summit routes and e-bike outings.">
+<meta name="description" content="Calendar of guided hikes and events in the Orobie Alps: nature walks, mushroom foraging and summit routes.">
 <link rel="canonical" href="{{ site.url }}/en/events.html">
 <link rel="alternate" hreflang="it" href="{{ site.url }}/eventi.html">
 <link rel="alternate" hreflang="en" href="{{ site.url }}/en/events.html">
@@ -14,14 +14,14 @@
 <link rel="icon" href="{{ site.url }}/images/logo1.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Events – Orobie Heritage">
-<meta property="og:description" content="Calendar of guided hikes and events in the Orobie Alps: nature walks, mushroom foraging, summit routes and e-bike outings.">
+<meta property="og:description" content="Calendar of guided hikes and events in the Orobie Alps: nature walks, mushroom foraging and summit routes.">
 <meta property="og:url" content="{{ site.url }}/en/events.html">
 <meta property="og:image" content="{{ site.url }}/images/hero.jpg">
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Orobie Heritage">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Events – Orobie Heritage">
-<meta name="twitter:description" content="Calendar of guided hikes and events in the Orobie Alps: nature walks, mushroom foraging, summit routes and e-bike outings.">
+<meta name="twitter:description" content="Calendar of guided hikes and events in the Orobie Alps: nature walks, mushroom foraging and summit routes.">
 <meta name="twitter:image" content="{{ site.url }}/images/hero.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -307,7 +307,6 @@ a.event-card{cursor:pointer}
   <div class="legend-item"><span class="legend-dot cat-in-vetta"></span><strong>Summit Routes</strong> — peaks, ridges, elevation gain.</div>
   <div class="legend-item"><span class="legend-dot cat-naturalistiche"></span><strong>Nature Walks</strong> — botany, geology, wildlife, fossils.</div>
   <div class="legend-item"><span class="legend-dot cat-micologiche"></span><strong>Mushroom Foraging</strong> — mushrooms, forest, seasonality.</div>
-  <div class="legend-item"><span class="legend-dot cat-e-bike"></span><strong>E-Bike</strong> — assisted routes, accessible to everyone.</div>
 </div>
 
 <!-- CATEGORY FILTERS -->
@@ -316,7 +315,6 @@ a.event-card{cursor:pointer}
   <button class="cat-btn" data-cat="in-vetta">Summit Routes</button>
   <button class="cat-btn" data-cat="naturalistiche">Nature Walks</button>
   <button class="cat-btn" data-cat="micologiche">Mushroom Foraging</button>
-  <button class="cat-btn" data-cat="e-bike">E-Bike</button>
 </div>
 <p class="cat-caption" id="catCaption">All upcoming outings, every type.</p>
 
@@ -365,8 +363,7 @@ const CAT_INFO = {
   '':              {label:'All',              caption:'All upcoming outings, every type.'},
   'in-vetta':       {label:'Summit Routes',    caption:'Peaks, ridges, elevation gain.'},
   'naturalistiche': {label:'Nature Walks',     caption:'Botany, geology, wildlife, fossils.'},
-  'micologiche':    {label:'Mushroom Foraging',caption:'Mushrooms, forest, seasonality.'},
-  'e-bike':         {label:'E-Bike',           caption:'Assisted routes, accessible to everyone.'}
+  'micologiche':    {label:'Mushroom Foraging',caption:'Mushrooms, forest, seasonality.'}
 };
 
 document.querySelectorAll('.cat-btn').forEach(btn => {

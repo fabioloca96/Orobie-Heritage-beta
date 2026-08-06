@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eventi – Orobie Heritage</title>
-<meta name="description" content="Calendario delle escursioni ed eventi guidati sulle Alpi Orobie: uscite naturalistiche, micologiche, in vetta e in e-bike.">
+<meta name="description" content="Calendario delle escursioni ed eventi guidati sulle Alpi Orobie: uscite naturalistiche, micologiche e in vetta.">
 <link rel="canonical" href="{{ site.url }}/eventi.html">
 <link rel="alternate" hreflang="it" href="{{ site.url }}/eventi.html">
 <link rel="alternate" hreflang="en" href="{{ site.url }}/en/events.html">
@@ -14,14 +14,14 @@
 <link rel="icon" href="{{ site.url }}/images/logo1.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Eventi – Orobie Heritage">
-<meta property="og:description" content="Calendario delle escursioni ed eventi guidati sulle Alpi Orobie: uscite naturalistiche, micologiche, in vetta e in e-bike.">
+<meta property="og:description" content="Calendario delle escursioni ed eventi guidati sulle Alpi Orobie: uscite naturalistiche, micologiche e in vetta.">
 <meta property="og:url" content="{{ site.url }}/eventi.html">
 <meta property="og:image" content="{{ site.url }}/images/hero.jpg">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="Orobie Heritage">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Eventi – Orobie Heritage">
-<meta name="twitter:description" content="Calendario delle escursioni ed eventi guidati sulle Alpi Orobie: uscite naturalistiche, micologiche, in vetta e in e-bike.">
+<meta name="twitter:description" content="Calendario delle escursioni ed eventi guidati sulle Alpi Orobie: uscite naturalistiche, micologiche e in vetta.">
 <meta name="twitter:image" content="{{ site.url }}/images/hero.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -308,7 +308,6 @@ a.event-card{cursor:pointer}
   <div class="legend-item"><span class="legend-dot cat-in-vetta"></span><strong>In Vetta</strong> — cime, creste, dislivello.</div>
   <div class="legend-item"><span class="legend-dot cat-naturalistiche"></span><strong>Naturalistiche</strong> — botanica, geologia, fauna, fossili.</div>
   <div class="legend-item"><span class="legend-dot cat-micologiche"></span><strong>Micologiche</strong> — funghi, bosco, stagionalità.</div>
-  <div class="legend-item"><span class="legend-dot cat-e-bike"></span><strong>E-Bike</strong> — percorsi assistiti, accessibili a tutti.</div>
 </div>
 
 <!-- FILTRI CATEGORIA -->
@@ -317,7 +316,6 @@ a.event-card{cursor:pointer}
   <button class="cat-btn" data-cat="in-vetta">In Vetta</button>
   <button class="cat-btn" data-cat="naturalistiche">Naturalistiche</button>
   <button class="cat-btn" data-cat="micologiche">Micologiche</button>
-  <button class="cat-btn" data-cat="e-bike">E-Bike</button>
 </div>
 <p class="cat-caption" id="catCaption">Tutte le uscite, di ogni tipo.</p>
 
@@ -366,8 +364,7 @@ const CAT_INFO = {
   '':              {label:'Tutte',           caption:'Tutte le uscite, di ogni tipo.'},
   'in-vetta':       {label:'In Vetta',        caption:'Cime, creste, dislivello.'},
   'naturalistiche': {label:'Naturalistiche',  caption:'Botanica, geologia, fauna, fossili.'},
-  'micologiche':    {label:'Micologiche',     caption:'Funghi, bosco, stagionalità.'},
-  'e-bike':         {label:'E-Bike',          caption:'Percorsi assistiti, accessibili a tutti.'}
+  'micologiche':    {label:'Micologiche',     caption:'Funghi, bosco, stagionalità.'}
 };
 
 document.querySelectorAll('.cat-btn').forEach(btn => {
