@@ -15,6 +15,10 @@ plugins:
 
 contact:
   whatsapp_number: "393792279354" # <-- sostituisci con il numero vero (formato internazionale, senza + né spazi)
+  email: "orobie.heritage@gmail.com"
+
+newsletter:
+  formspree_id: "xaewpboo"
 
 collections:
   eventi:
