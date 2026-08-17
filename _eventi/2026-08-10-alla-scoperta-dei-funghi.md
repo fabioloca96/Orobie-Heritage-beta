@@ -1,5 +1,5 @@
 ---
-date: 2026-08-11
+date: 2026-08-13
 category: micologiche
 title: Alla scoperta dei funghi
 title_en: Guided Mushroom Walk (Free Demo)
