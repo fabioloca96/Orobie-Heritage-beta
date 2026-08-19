@@ -1,8 +1,8 @@
 ---
-date: 2026-08-25
+date: 2026-08-23
 category: micologiche
-title: Alla scoperta dei funghi - Val Sedornia
-title_en: ""
+title: Alla scoperta dei funghi - Spiazzi di Gromo
+title_en: Guided Mushroom Walk
 images:
   - images/uploads/photo_5897634931372920607_y.jpg
 desc: >
@@ -36,13 +36,12 @@ desc_en: >-
 
 
   For any questions, feel free to contact me: +39 379 227 9354
-location: "Tezzi Alti, Gromo "
+location: Spiazzi di Gromo
 location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
-meeting_time: 7:30, rientro previsto in mattinata
+meeting_time: 7:30
 meeting_time_en: 7:30 AM
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
-cost_en: 25€
-difficulty: Media
+difficulty: Facile
 max_participants: "12"
 what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
   giacca antipioggia, pantaloni lunghi, cappello e crema solare, acqua almeno 1
