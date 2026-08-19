@@ -1,7 +1,7 @@
 ---
 date: 2026-08-22
 category: micologiche
-title: Alla scoperta dei funghi
+title: Alla scoperta dei funghi - Passo della Presolana
 title_en: Guided Mushroom Walk
 images:
   - images/uploads/photo_5897634931372920607_y.jpg
