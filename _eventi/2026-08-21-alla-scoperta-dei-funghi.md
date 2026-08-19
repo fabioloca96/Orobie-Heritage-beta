@@ -18,8 +18,6 @@ desc: >
 
 
   Guida: Fabio Locatelli — Accompagnatore di Media Montagna, vicepresidente dell'Associazione Micologica Bresadola — Gruppo di Villa d'Ogna.
-
-  Per qualsiasi informazione contattarmi: tel. 3792279354
 desc_en: >-
   Join us on a journey into the world of mushrooms. On this morning walk we'll
   uncover some of the secrets hidden within this fascinating world.
@@ -30,6 +28,7 @@ desc_en: >-
 
   This walk is not for those hoping to go home with baskets full of mushrooms. It's for those who want to spend a pleasant morning in the woods and learn to see their surroundings from a new perspective, guided by someone who lives the forest every day. Mushroom foraging is subject to rules, which will be explained on site. Determining whether a mushroom is edible is the responsibility of the local ATS Mycological Inspectorate.
 
+
   I love to meet visitors and showing the beauty of our valley, and maybe you'd like to book a private tour for not mixing up languages. Contact me.
 
 
@@ -39,6 +38,8 @@ desc_en: >-
   For any questions, feel free to contact me: +39 379 227 9354
 location: Passo della Presolana
 location_map_url: https://maps.app.goo.gl/rvU7d6vit4gUygxT7
+meeting_time: "7:30"
+meeting_time_en: "7:30 AM"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 difficulty: Facile
 max_participants: "12"
