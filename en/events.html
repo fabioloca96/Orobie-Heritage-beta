@@ -465,8 +465,9 @@ function renderList(){
     shown = shown.filter(e => e.date === filterDate);
     label.textContent = 'Events on ' + formatDateLong(filterDate);
   } else {
-    const monthStart = `${calYear}-${String(calMonth+1).padStart(2,'0')}-01`;
-    shown = shown.filter(e => e.date >= monthStart).sort((a,b)=>a.date.localeCompare(b.date));
+    // only events from today onward (never past ones), soonest first
+    const todayStr = toDateStr(now);
+    shown = shown.filter(e => e.date >= todayStr).sort((a,b)=>a.date.localeCompare(b.date));
     label.textContent = 'Upcoming Events';
   }
 
