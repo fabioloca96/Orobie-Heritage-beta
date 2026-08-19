@@ -468,9 +468,9 @@ function renderList(){
     shown = shown.filter(e => e.date === filterDate);
     label.textContent = 'Eventi del ' + formatDateLong(filterDate);
   } else {
-    // mostra dal mese corrente in poi, ordinate
-    const monthStart = `${calYear}-${String(calMonth+1).padStart(2,'0')}-01`;
-    shown = shown.filter(e => e.date >= monthStart).sort((a,b)=>a.date.localeCompare(b.date));
+    // solo eventi da oggi in poi (mai quelli già passati), dal più vicino al più lontano
+    const todayStr = toDateStr(now);
+    shown = shown.filter(e => e.date >= todayStr).sort((a,b)=>a.date.localeCompare(b.date));
     label.textContent = 'Prossimi eventi';
   }
 

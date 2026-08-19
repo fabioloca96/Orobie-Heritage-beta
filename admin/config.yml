@@ -34,8 +34,10 @@ collections:
       - {label: "Orario di ritrovo", name: "meeting_time", widget: "string", required: false, hint: "es. \"7:30\" oppure \"7:30, rientro previsto in mattinata\""}
       - {label: "Orario di ritrovo (EN)", name: "meeting_time_en", widget: "string", required: false}
       - {label: "Costo", name: "cost", widget: "string", required: false, hint: "es. \"Gratuita\", \"20€ a persona\""}
+      - {label: "Costo (EN)", name: "cost_en", widget: "string", required: false, hint: "Puoi scrivere anche testo libero, non solo il prezzo, es. \"Free\", \"€20 per person\""}
       - {label: "Difficoltà", name: "difficulty", widget: "select", required: false, options: ["Facile", "Media", "Impegnativa"]}
       - {label: "Numero massimo partecipanti", name: "max_participants", widget: "string", required: false, hint: "es. \"15\""}
+      - {label: "Numero massimo partecipanti (EN)", name: "max_participants_en", widget: "string", required: false}
       - {label: "Cosa portare", name: "what_to_bring", widget: "text", required: false, hint: "Una voce per riga, es. scarponi da trekking / acqua / giacca a vento"}
       - {label: "Cosa portare (EN)", name: "what_to_bring_en", widget: "text", required: false}
       - {label: "Link modulo di iscrizione (opzionale)", name: "signup_url", widget: "string", required: false, hint: "Es. link a un Google Form. Se lo lasci vuoto, la sezione Iscrizione userà WhatsApp."}

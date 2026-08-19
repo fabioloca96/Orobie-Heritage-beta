@@ -330,18 +330,45 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     {% when 'Impegnativa' %}{% assign diff_en = 'Challenging' %}
     {% else %}{% assign diff_en = page.difficulty %}
   {% endcase %}
-  {% assign meeting_time_en = page.meeting_time_en | default: page.meeting_time %}
+  {% assign cost_en = page.cost_en | default: page.cost %}
+  {% assign max_participants_en = page.max_participants_en | default: page.max_participants %}
+
+  <!-- Se in CMS "7:30" viene salvato senza virgolette, YAML lo legge come tempo
+       sessagesimale (7:30 -> 450). Qui lo ricostruiamo automaticamente in H:MM
+       ogni volta che il valore risulta un numero puro senza ":" visibile. -->
+  {% assign mt_it_raw = page.meeting_time | append: "" %}
+  {% if mt_it_raw == "" or mt_it_raw contains ":" %}
+    {% assign mt_it = mt_it_raw %}
+  {% else %}
+    {% assign mt_it_num = page.meeting_time | round %}
+    {% assign mt_it_h = mt_it_num | divided_by: 60 %}
+    {% assign mt_it_m = mt_it_num | modulo: 60 %}
+    {% if mt_it_m < 10 %}{% assign mt_it_m = "0" | append: mt_it_m %}{% endif %}
+    {% assign mt_it = mt_it_h | append: ":" | append: mt_it_m %}
+  {% endif %}
+  {% assign mt_en_source = page.meeting_time_en | default: page.meeting_time %}
+  {% assign mt_en_raw = mt_en_source | append: "" %}
+  {% if mt_en_raw == "" or mt_en_raw contains ":" %}
+    {% assign mt_en = mt_en_raw %}
+  {% else %}
+    {% assign mt_en_num = mt_en_source | round %}
+    {% assign mt_en_h = mt_en_num | divided_by: 60 %}
+    {% assign mt_en_m = mt_en_num | modulo: 60 %}
+    {% if mt_en_m < 10 %}{% assign mt_en_m = "0" | append: mt_en_m %}{% endif %}
+    {% assign mt_en = mt_en_h | append: ":" | append: mt_en_m %}
+  {% endif %}
+
   <div class="ev-facts">
     {% if page.meeting_time %}
     <div class="ev-fact">
       <div class="ev-fact-label"><span data-lang="it">Ritrovo</span><span data-lang="en">Meeting time</span></div>
-      <div class="ev-fact-value"><span data-lang="it">{{ page.meeting_time }}</span><span data-lang="en">{{ meeting_time_en }}</span></div>
+      <div class="ev-fact-value"><span data-lang="it">{{ mt_it }}</span><span data-lang="en">{{ mt_en }}</span></div>
     </div>
     {% endif %}
     {% if page.cost %}
     <div class="ev-fact">
       <div class="ev-fact-label"><span data-lang="it">Costo</span><span data-lang="en">Cost</span></div>
-      <div class="ev-fact-value">{{ page.cost }}</div>
+      <div class="ev-fact-value"><span data-lang="it">{{ page.cost }}</span><span data-lang="en">{{ cost_en }}</span></div>
     </div>
     {% endif %}
     {% if page.difficulty %}
@@ -353,7 +380,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     {% if page.max_participants %}
     <div class="ev-fact">
       <div class="ev-fact-label"><span data-lang="it">Max partecipanti</span><span data-lang="en">Max participants</span></div>
-      <div class="ev-fact-value">{{ page.max_participants }}</div>
+      <div class="ev-fact-value"><span data-lang="it">{{ page.max_participants }}</span><span data-lang="en">{{ max_participants_en }}</span></div>
     </div>
     {% endif %}
   </div>
