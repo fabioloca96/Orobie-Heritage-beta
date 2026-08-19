@@ -134,6 +134,48 @@ nav{
   padding:.35rem .8rem;background:var(--parchment);
   border:1px solid var(--tan);color:var(--earth);
 }
+
+/* ── SEZIONI INFO (Luogo, Costo, Cosa portare, Iscrizione...) ── */
+.ev-section{margin-bottom:2.2rem}
+.ev-label{
+  display:flex;align-items:center;gap:.7rem;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--rust);margin-bottom:.7rem;
+}
+.ev-label::before{content:'';width:26px;height:1px;background:var(--rust)}
+.ev-value{font-family:var(--serif);font-size:1.08rem;color:var(--earth);line-height:1.65}
+
+.ev-facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:1px;background:var(--tan);border:1px solid var(--tan);
+  margin-bottom:2.2rem;
+}
+.ev-fact{background:var(--parchment);padding:1rem 1.2rem}
+.ev-fact-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--earth);margin-bottom:.35rem}
+.ev-fact-value{font-family:var(--serif);font-size:1.35rem;color:var(--peak)}
+
+.ev-map-wrap{position:relative;border:1px solid var(--tan);overflow:hidden;height:230px;margin-top:.3rem}
+.ev-map-frame{width:100%;height:100%;border:0;display:block}
+.ev-map-overlay{position:absolute;inset:0;cursor:pointer;transition:background .2s}
+.ev-map-overlay:hover{background:rgba(46,36,22,.1)}
+.ev-map-cta{
+  position:absolute;right:.7rem;bottom:.7rem;
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--peak);color:var(--cream);
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.5rem .85rem;
+}
+
+.ev-list{list-style:none;font-family:var(--serif);font-size:1.08rem;color:var(--earth);line-height:1.85}
+.ev-list li{padding-left:1.3rem;position:relative}
+.ev-list li::before{content:'—';position:absolute;left:0;color:var(--rust)}
+.ev-list[data-lang="en"]{display:none}
+body.lang-en .ev-list[data-lang="it"]{display:none}
+body.lang-en .ev-list[data-lang="en"]{display:block}
+
+.ev-signup p{margin-bottom:1rem}
+.ev-signup-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+
 .btn{
   display:inline-block;padding:.75rem 1.9rem;
   border:1px solid var(--bark);
@@ -143,6 +185,14 @@ nav{
   transition:background .2s,color .2s;
 }
 .btn:hover{background:var(--bark);color:var(--cream)}
+body.lang-en .btn[data-lang="en"]{display:inline-flex}
+.btn svg{vertical-align:-3px;margin-right:.1rem}
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--sage);border-color:var(--sage);color:var(--cream);
+}
+.btn-whatsapp:hover{background:#66795f;border-color:#66795f;color:var(--cream)}
+.btn-call{display:inline-flex;align-items:center;gap:.55rem}
 
 footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
 .ft-center{font-size:.82rem;letter-spacing:.07em;color:var(--earth)}
@@ -217,22 +267,6 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
     <span data-lang="en">{{ mon_en }} {{ page.date | date: "%-d" }}, {{ page.date | date: "%Y" }}</span>
   </p>
 
-  {% if page.images and page.images.size > 0 %}
-  <div class="ev-photos">
-    {% for img in page.images %}
-    <div class="ev-photo"><img src="../{{ img }}" alt=""></div>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  {% assign desc_en = page.desc_en | default: page.desc %}
-  {% if page.desc %}
-  <p class="ev-desc">
-    <span data-lang="it">{{ page.desc }}</span>
-    <span data-lang="en">{{ desc_en }}</span>
-  </p>
-  {% endif %}
-
   {% assign tags_en = page.tag_list_en | default: page.tag_list %}
   {% if page.tag_list %}
   <div class="ev-tags" data-lang="it">
@@ -245,10 +279,131 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   </div>
   {% endif %}
 
-  {% assign wa_text_it = "Ciao! Vorrei prenotare: " | append: page.title %}
-  {% assign wa_text_en = "Hi! I'd like to book: " | append: title_en %}
-  <a class="btn" data-lang="it" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_text_it | uri_escape }}" target="_blank" rel="noopener noreferrer">Prenota su WhatsApp</a>
-  <a class="btn" data-lang="en" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_text_en | uri_escape }}" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+  {% if page.images and page.images.size > 0 %}
+  <div class="ev-photos">
+    {% for img in page.images %}
+    <div class="ev-photo"><img src="../{{ img }}" alt=""></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- DESCRIZIONE -->
+  {% assign desc_en = page.desc_en | default: page.desc %}
+  {% if page.desc %}
+  <div class="ev-section">
+    <div class="ev-label"><span data-lang="it">Descrizione</span><span data-lang="en">Description</span></div>
+    <p class="ev-value">
+      <span data-lang="it">{{ page.desc }}</span>
+      <span data-lang="en">{{ desc_en }}</span>
+    </p>
+  </div>
+  {% endif %}
+
+  <!-- LUOGO -->
+  {% if page.location %}
+  {% assign loc_enc = page.location | url_encode %}
+  {% if page.location_map_url and page.location_map_url != "" %}
+    {% assign maps_href = page.location_map_url %}
+  {% else %}
+    {% assign maps_href = "https://www.google.com/maps/search/?api=1&query=" | append: loc_enc %}
+  {% endif %}
+  <div class="ev-section">
+    <div class="ev-label"><span data-lang="it">Luogo</span><span data-lang="en">Location</span></div>
+    <p class="ev-value">{{ page.location }}</p>
+    <div class="ev-map-wrap">
+      <iframe class="ev-map-frame" src="https://www.google.com/maps?q={{ loc_enc }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" title="Mappa: {{ page.location }}"></iframe>
+      <a class="ev-map-overlay" href="{{ maps_href }}" target="_blank" rel="noopener noreferrer" aria-label="Apri in Google Maps">
+        <span class="ev-map-cta">
+          <span data-lang="it">Apri in Google Maps ↗</span>
+          <span data-lang="en">Open in Google Maps ↗</span>
+        </span>
+      </a>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- COSTO / DIFFICOLTÀ / MAX PARTECIPANTI -->
+  {% if page.cost or page.difficulty or page.max_participants %}
+  {% case page.difficulty %}
+    {% when 'Facile' %}{% assign diff_en = 'Easy' %}
+    {% when 'Media' %}{% assign diff_en = 'Medium' %}
+    {% when 'Impegnativa' %}{% assign diff_en = 'Challenging' %}
+    {% else %}{% assign diff_en = page.difficulty %}
+  {% endcase %}
+  <div class="ev-facts">
+    {% if page.cost %}
+    <div class="ev-fact">
+      <div class="ev-fact-label"><span data-lang="it">Costo</span><span data-lang="en">Cost</span></div>
+      <div class="ev-fact-value">{{ page.cost }}</div>
+    </div>
+    {% endif %}
+    {% if page.difficulty %}
+    <div class="ev-fact">
+      <div class="ev-fact-label"><span data-lang="it">Difficoltà</span><span data-lang="en">Difficulty</span></div>
+      <div class="ev-fact-value"><span data-lang="it">{{ page.difficulty }}</span><span data-lang="en">{{ diff_en }}</span></div>
+    </div>
+    {% endif %}
+    {% if page.max_participants %}
+    <div class="ev-fact">
+      <div class="ev-fact-label"><span data-lang="it">Max partecipanti</span><span data-lang="en">Max participants</span></div>
+      <div class="ev-fact-value">{{ page.max_participants }}</div>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <!-- COSA PORTARE -->
+  {% if page.what_to_bring %}
+  <div class="ev-section">
+    <div class="ev-label"><span data-lang="it">Cosa portare</span><span data-lang="en">What to bring</span></div>
+    <ul class="ev-list" data-lang="it">
+      {% assign items_it = page.what_to_bring | newline_to_br | split: '<br />' %}
+      {% for i in items_it %}{% assign i = i | strip %}{% if i != "" %}<li>{{ i }}</li>{% endif %}{% endfor %}
+    </ul>
+    {% assign wtb_en = page.what_to_bring_en | default: page.what_to_bring %}
+    <ul class="ev-list" data-lang="en">
+      {% assign items_en = wtb_en | newline_to_br | split: '<br />' %}
+      {% for i in items_en %}{% assign i = i | strip %}{% if i != "" %}<li>{{ i }}</li>{% endif %}{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- ISCRIZIONE -->
+  <div class="ev-section ev-signup">
+    <div class="ev-label"><span data-lang="it">Iscrizione</span><span data-lang="en">Registration</span></div>
+    {% if page.signup_url and page.signup_url != "" %}
+      <p class="ev-value">
+        <span data-lang="it">Iscriviti tramite il modulo online.</span>
+        <span data-lang="en">Sign up using the online form.</span>
+      </p>
+      <a class="btn" href="{{ page.signup_url }}" target="_blank" rel="noopener noreferrer">
+        <span data-lang="it">Vai al modulo di iscrizione</span>
+        <span data-lang="en">Go to signup form</span>
+      </a>
+    {% else %}
+      {% assign wa_text_it = "Ciao! Ho una domanda su: " | append: page.title %}
+      {% assign wa_text_en = "Hi! I have a question about: " | append: title_en %}
+      <p class="ev-value">
+        <span data-lang="it">Hai domande? Contattami su WhatsApp o chiamami direttamente.</span>
+        <span data-lang="en">Have questions? Message me on WhatsApp or give me a call.</span>
+      </p>
+      <div class="ev-signup-actions">
+        <a class="btn btn-whatsapp" data-lang="it" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_text_it | uri_escape }}" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 00-7.79 13.5L3 21l4.7-1.23A9 9 0 1012 3z"/><path d="M8.5 8.3c0-.5.3-.9.8-.9h.6c.3 0 .5.2.6.4l.6 1.4c.1.3.1.6-.1.8l-.5.6c.5 1 1.3 1.8 2.3 2.3l.6-.5c.2-.2.5-.2.8-.1l1.4.6c.3.1.4.4.4.6v.6c0 .5-.4.8-.9.8-3 0-6-2.9-6.6-6.6z"/></svg>
+          Contattami su WhatsApp
+        </a>
+        <a class="btn btn-whatsapp" data-lang="en" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_text_en | uri_escape }}" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 00-7.79 13.5L3 21l4.7-1.23A9 9 0 1012 3z"/><path d="M8.5 8.3c0-.5.3-.9.8-.9h.6c.3 0 .5.2.6.4l.6 1.4c.1.3.1.6-.1.8l-.5.6c.5 1 1.3 1.8 2.3 2.3l.6-.5c.2-.2.5-.2.8-.1l1.4.6c.3.1.4.4.4.6v.6c0 .5-.4.8-.9.8-3 0-6-2.9-6.6-6.6z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a class="btn btn-call" href="tel:+{{ site.contact.whatsapp_number }}">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a12 12 0 005.5 5.5L15 14l5 2v3c0 1-.9 1.8-1.9 1.6C9.6 19.2 4.8 14.4 3.4 6.9 3.2 5.9 4 5 5 4z"/></svg>
+          <span data-lang="it">Chiamami</span>
+          <span data-lang="en">Call me</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
 </div>
 
 <footer>

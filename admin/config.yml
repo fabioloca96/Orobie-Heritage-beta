@@ -29,6 +29,14 @@ collections:
       - {label: "Description (EN)", name: "desc_en", widget: "text", required: false}
       - {label: "Tag (separati da virgola)", name: "tag_list", widget: "string", required: false, hint: "es. Media difficoltà, 6h, Presolana"}
       - {label: "Tags (EN, comma separated)", name: "tag_list_en", widget: "string", required: false, hint: "e.g. Medium difficulty, 6h, Presolana"}
+      - {label: "Luogo", name: "location", widget: "string", required: false, hint: "Nome del posto/ritrovo, es. \"Rifugio Curò, Val Seriana\". Viene usato anche per generare l'anteprima della mappa."}
+      - {label: "Link Google Maps (opzionale)", name: "location_map_url", widget: "string", required: false, hint: "Su Google Maps: cerca il posto → Condividi → Copia link, e incollalo qui. Se lo lasci vuoto, il pulsante userà comunque il nome del luogo per aprire Google Maps."}
+      - {label: "Costo", name: "cost", widget: "string", required: false, hint: "es. \"Gratuita\", \"20€ a persona\""}
+      - {label: "Difficoltà", name: "difficulty", widget: "select", required: false, options: ["Facile", "Media", "Impegnativa"]}
+      - {label: "Numero massimo partecipanti", name: "max_participants", widget: "string", required: false, hint: "es. \"15\""}
+      - {label: "Cosa portare", name: "what_to_bring", widget: "text", required: false, hint: "Una voce per riga, es. scarponi da trekking / acqua / giacca a vento"}
+      - {label: "Cosa portare (EN)", name: "what_to_bring_en", widget: "text", required: false}
+      - {label: "Link modulo di iscrizione (opzionale)", name: "signup_url", widget: "string", required: false, hint: "Es. link a un Google Form. Se lo lasci vuoto, la sezione Iscrizione userà WhatsApp."}
 
   - name: "esperienze"
     label: "Esperienze (catalogo)"
