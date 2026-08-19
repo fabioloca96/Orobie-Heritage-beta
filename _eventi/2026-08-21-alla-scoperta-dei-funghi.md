@@ -38,8 +38,8 @@ desc_en: >-
   For any questions, feel free to contact me: +39 379 227 9354
 location: Spiazzi di Gromo
 location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
-meeting_time: "7:30"
-meeting_time_en: "7:30 AM"
+meeting_time: 7:30
+meeting_time_en: 7:30 AM
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 difficulty: Facile
 max_participants: "12"
@@ -49,5 +49,5 @@ what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
 what_to_bring_en: >
   Trekking boots, weather-appropriate clothing, rain jacket, long trousers, hat
   and sunscreen, at least 1 litre of water, a snack.
-signup_url: https://forms.gle/24XwEUdDYZm3AN2q7
+signup_url: https://forms.gle/cLwxs75pu4FriW3GA
 ---
