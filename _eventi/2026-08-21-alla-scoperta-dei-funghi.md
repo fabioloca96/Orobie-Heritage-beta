@@ -39,7 +39,7 @@ desc_en: >-
 location: Spiazzi di Gromo
 location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
 meeting_time: 7:30
-meeting_time_en: 7:30 AM
+meeting_time_en: 7:30 AM rientro in mattinata
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 difficulty: Facile
 max_participants: "12"
