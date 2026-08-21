@@ -1,13 +1,13 @@
 ---
-date: 2026-08-23
+date: 2026-08-29
 category: micologiche
-title: Alla scoperta dei funghi - Spiazzi di Gromo
-title_en: Guided Mushroom Walk
+title: Alla scoperta dei funghi - Passo della Presolana (pomeriggio)
+title_en: Guided Mushroom Walk (afternoon)
 images:
   - images/uploads/photo_5897634931372920607_y.jpg
 desc: >
   Camminiamo assieme alla scoperta del mondo dei funghi. In questa escursione
-  mattutina scopriremo alcuni dei segreti che si celano dietro a questo
+  pomeridiana scopriremo alcuni dei segreti che si celano dietro a questo
   fantastico mondo.
 
 
@@ -17,13 +17,13 @@ desc: >
   Adatta a tutti coloro che sono affascinati dal bosco e vogliono saperne di più. Impareremo a leggere l'ambiente per capire dove cercarli, toccheremo con mano l'immensa varietà micologica che caratterizza le nostre vallate e scopriremo i legami profondi tra il suolo, le piante e il clima.
 
 
-  Questa uscita non è adatta a chi crede di tornare a casa con cesti pieni di funghi. È adatta a chi desidera passare una mattinata piacevole nel bosco e imparare a guardarsi attorno con una nuova prospettiva, grazie agli occhi attenti di una guida che il bosco lo vive quotidianamente. La raccolta dei funghi è soggetta a regole che verranno illustrate sul posto. Il giudizio di commestibilità dei funghi è demandato all'Ispettorato Micologico dell'ATS.
+  Questa uscita non è adatta a chi crede di tornare a casa con cesti pieni di funghi. È adatta a chi desidera passare un pomeriggio piacevole nel bosco e imparare a guardarsi attorno con una nuova prospettiva, grazie agli occhi attenti di una guida che il bosco lo vive quotidianamente. La raccolta dei funghi è soggetta a regole che verranno illustrate sul posto. Il giudizio di commestibilità dei funghi è demandato all'Ispettorato Micologico dell'ATS.
 
 
   Guida: Fabio Locatelli — Accompagnatore di Media Montagna, vicepresidente dell'Associazione Micologica Bresadola — Gruppo di Villa d'Ogna.
 desc_en: >-
-  Join us on a journey into the world of mushrooms. On this morning walk we'll
-  uncover some of the secrets hidden within this fascinating world.
+  Join us on a journey into the world of mushrooms. On this afternoon walk
+  we'll uncover some of the secrets hidden within this fascinating world.
 
 
   Each outing in this series takes place in a different setting, with the itinerary decided each time based on weather conditions and the season. Along the way we analyse the surrounding environment together — plants, soil, terrain morphology and climate — to understand where and why mushrooms grow.
@@ -32,20 +32,20 @@ desc_en: >-
   Suitable for anyone fascinated by the forest and eager to learn more. We'll learn to read the landscape to understand where to look, get hands-on with the extraordinary variety of fungi found in our valleys, and discover the deep connections between soil, plants, and climate.
 
 
-  This walk is not for those hoping to go home with baskets full of mushrooms. It's for those who want to spend a pleasant morning in the woods and learn to see their surroundings from a new perspective, guided by someone who lives the forest every day. Mushroom foraging is subject to rules, which will be explained on site. Determining whether a mushroom is edible is the responsibility of the local ATS Mycological Inspectorate.
+  This walk is not for those hoping to go home with baskets full of mushrooms. It's for those who want to spend a pleasant afternoon in the woods and learn to see their surroundings from a new perspective, guided by someone who lives the forest every day. Mushroom foraging is subject to rules, which will be explained on site. Determining whether a mushroom is edible is the responsibility of the local ATS Mycological Inspectorate.
 
 
-  I love meeting visitors and showing them the beauty of our valley. Why not book a private tour? Get in touch!
+  I love to meet visitors and showing the beauty of our valley, and maybe you'd like to book a private tour for not mixing up languages. Contact me.
 
 
   Guide: Fabio Locatelli — Accompagnatore di Media Montagna (Certified Mountain Guide), Vice President of the Associazione Micologica Bresadola — Villa d'Ogna Group.
 
 
   For any questions, feel free to contact me: +39 379 227 9354
-location: Spiazzi di Gromo
-location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
-meeting_time: "7:30"
-meeting_time_en: "7:30 AM rientro in mattinata"
+location: Passo della Presolana
+location_map_url: https://maps.app.goo.gl/rvU7d6vit4gUygxT7
+meeting_time: "15:00"
+meeting_time_en: "3:00 PM"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 difficulty: Facile
 max_participants: "12"

@@ -1,8 +1,8 @@
 ---
-date: 2026-08-23
+date: 2026-08-25
 category: micologiche
-title: Alla scoperta dei funghi - Spiazzi di Gromo
-title_en: Guided Mushroom Walk
+title: Alla scoperta dei funghi - Val Sedornia
+title_en: Discovering Mushrooms - Val Sedornia
 images:
   - images/uploads/photo_5897634931372920607_y.jpg
 desc: >
@@ -17,7 +17,12 @@ desc: >
   Adatta a tutti coloro che sono affascinati dal bosco e vogliono saperne di più. Impareremo a leggere l'ambiente per capire dove cercarli, toccheremo con mano l'immensa varietà micologica che caratterizza le nostre vallate e scopriremo i legami profondi tra il suolo, le piante e il clima.
 
 
-  Questa uscita non è adatta a chi crede di tornare a casa con cesti pieni di funghi. È adatta a chi desidera passare una mattinata piacevole nel bosco e imparare a guardarsi attorno con una nuova prospettiva, grazie agli occhi attenti di una guida che il bosco lo vive quotidianamente. La raccolta dei funghi è soggetta a regole che verranno illustrate sul posto. Il giudizio di commestibilità dei funghi è demandato all'Ispettorato Micologico dell'ATS.
+  Questa uscita non è adatta a chi crede di tornare a casa con cesti pieni di funghi. È adatta a chi desidera passare una mattinata piacevole nel bosco e imparare a guardarsi attorno con una nuova prospettiva, grazie agli occhi attenti di una guida che il bosco lo vive quotidianamente.
+
+
+  Dislivello max 500mt
+
+  In base alle condizioni decideremo l'itinerario.
 
 
   Guida: Fabio Locatelli — Accompagnatore di Media Montagna, vicepresidente dell'Associazione Micologica Bresadola — Gruppo di Villa d'Ogna.
@@ -42,13 +47,15 @@ desc_en: >-
 
 
   For any questions, feel free to contact me: +39 379 227 9354
-location: Spiazzi di Gromo
-location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
-meeting_time: "7:30"
-meeting_time_en: "7:30 AM rientro in mattinata"
+location: Tezzi alti (Gandellino)
+location_map_url: https://maps.app.goo.gl/eaPZUasYpnwby3pJ6
+meeting_time: "7:30 rientro in mattinata"
+meeting_time_en: "7:30 morning excursion (back by midday)"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
-difficulty: Facile
+cost_en: €25 — children under 12 free
+difficulty: Media
 max_participants: "12"
+max_participants_en: "12"
 what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
   giacca antipioggia, pantaloni lunghi, cappello e crema solare, acqua almeno 1
   litro, snack.
