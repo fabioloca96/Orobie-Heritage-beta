@@ -66,7 +66,9 @@ nav{
 .page-header{
   padding:4rem 3rem 2.5rem;
   max-width:1180px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;
 }
+.page-header-text{flex:1 1 320px}
 .page-eyebrow{
   display:flex;align-items:center;gap:.9rem;
   font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);
@@ -244,29 +246,27 @@ a.event-card{cursor:pointer}
   padding:2rem;
 }
 
-/* ── BANNER USCITA PRIVATA ── */
-.private-banner{max-width:1180px;margin:0 auto;padding:0 3rem 4rem}
+/* ── BANNER USCITA PRIVATA (nell'header, a fianco del titolo) ── */
 .private-banner-inner{
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;flex:1 1 440px;max-width:560px;
   background:var(--peak);color:var(--cream);
-  padding:2.6rem 2.8rem;
-  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  padding:2.3rem 2.6rem;
 }
-.private-banner-inner::before{content:'';position:absolute;top:0;left:0;width:52px;height:4px;background:var(--rust)}
+.private-banner-inner::before{content:'';position:absolute;top:0;left:0;width:46px;height:4px;background:var(--rust)}
 .private-eyebrow{
-  display:block;margin-bottom:.7rem;
-  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);
+  display:block;margin-bottom:.6rem;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);
 }
 .private-title{
   font-family:var(--serif);font-weight:300;
-  font-size:clamp(1.5rem,2.5vw,2rem);line-height:1.25;
-  color:var(--cream);margin-bottom:.7rem;max-width:560px;
+  font-size:1.65rem;line-height:1.25;
+  color:var(--cream);margin-bottom:.65rem;
 }
-.private-text{font-size:.95rem;color:var(--tan);line-height:1.65;max-width:560px}
+.private-text{font-size:1rem;color:var(--tan);line-height:1.6;margin-bottom:1.3rem}
 .private-cta{
-  flex-shrink:0;display:inline-flex;align-items:center;gap:.6rem;
-  padding:.85rem 1.9rem;border:1px solid var(--cream);
-  font-family:var(--sans);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 1.8rem;border:1px solid var(--cream);
+  font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--cream);text-decoration:none;
   transition:background .2s,color .2s;
 }
@@ -288,8 +288,7 @@ a.event-card{cursor:pointer}
   .cat-filters{padding:0 1.4rem}
   .cat-caption{padding:0 1.4rem}
   .main{grid-template-columns:1fr;padding:0 1.4rem 3rem}
-  .private-banner{padding:0 1.4rem 3rem}
-  .private-banner-inner{padding:2rem}
+  .private-banner-inner{max-width:none}
 }
 @media(max-width:520px){
   .page-header{padding:2rem 1rem 1.2rem}
@@ -329,10 +328,18 @@ a.event-card{cursor:pointer}
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="page-eyebrow">Calendario</div>
-  <h1 class="page-title">Eventi
-  </h1>
-  <p class="page-sub">Tutte le uscite in programma nelle Orobie.</p>
+  <div class="page-header-text">
+    <div class="page-eyebrow">Calendario</div>
+    <h1 class="page-title">Eventi
+    </h1>
+    <p class="page-sub">Tutte le uscite in programma nelle Orobie.</p>
+  </div>
+  <div class="private-banner-inner">
+    <span class="private-eyebrow">Escursioni su misura</span>
+    <p class="private-title">Hai in mente un'uscita da fare con il tuo gruppo?</p>
+    <p class="private-text">Sono esperto del territorio e accompagno gruppi in montagna su sentieri escursionistici, sia principianti che esperti, illustrando le caratteristiche dell'ambiente: flora, fauna, geologia e habitat.</p>
+    <a class="private-cta" href="https://wa.me/{{ site.contact.whatsapp_number }}?text=Ciao!%20Vorrei%20organizzare%20un%27uscita%20privata%20per%20il%20mio%20gruppo." target="_blank" rel="noopener noreferrer">Contattami</a>
+  </div>
 </div>
 
 <!-- LEGENDA CATEGORIE -->
@@ -375,18 +382,6 @@ a.event-card{cursor:pointer}
     <div class="events-list" id="eventsList"></div>
   </div>
 
-</div>
-
-<!-- BANNER USCITA PRIVATA -->
-<div class="private-banner">
-  <div class="private-banner-inner">
-    <div>
-      <span class="private-eyebrow">Escursioni su misura</span>
-      <p class="private-title">Hai in mente un'uscita da fare con il tuo gruppo?</p>
-      <p class="private-text">Sono esperto del territorio e accompagno gruppi in montagna su sentieri escursionistici, sia principianti che esperti, illustrando le caratteristiche dell'ambiente: flora, fauna, geologia e habitat. Organizziamo insieme un'uscita privata su misura per voi.</p>
-    </div>
-    <a class="private-cta" href="https://wa.me/{{ site.contact.whatsapp_number }}?text=Ciao!%20Vorrei%20organizzare%20un%27uscita%20privata%20per%20il%20mio%20gruppo." target="_blank" rel="noopener noreferrer">Contattami</a>
-  </div>
 </div>
 
 <script>
