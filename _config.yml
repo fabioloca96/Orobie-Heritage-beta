@@ -17,6 +17,10 @@ contact:
   whatsapp_number: "393792279354" # <-- sostituisci con il numero vero (formato internazionale, senza + né spazi)
   email: "orobie.heritage@gmail.com"
 
+social:
+  facebook: "https://www.facebook.com/profile.php?id=61593553893068"
+  instagram: "https://www.instagram.com/orobie.heritage/"
+
 newsletter:
   formspree_id: "xaewpboo"
 
