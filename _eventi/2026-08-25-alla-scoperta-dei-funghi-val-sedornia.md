@@ -49,6 +49,8 @@ desc_en: >-
   For any questions, feel free to contact me: +39 379 227 9354
 location: Tezzi alti (Gandellino)
 location_map_url: https://maps.app.goo.gl/eaPZUasYpnwby3pJ6
+location_lat: "45.9941699"
+location_lng: "9.9550629"
 meeting_time: "7:30 rientro in mattinata"
 meeting_time_en: "7:30 morning excursion (back by midday)"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
