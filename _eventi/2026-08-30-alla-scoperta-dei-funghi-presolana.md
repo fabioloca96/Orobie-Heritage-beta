@@ -42,12 +42,10 @@ desc_en: >-
 
 
   For any questions, feel free to contact me: +39 379 227 9354
-location: Passo della Presolana
-location_map_url: https://maps.app.goo.gl/cR1X6ZrQgf7dPr6CA
-location_lat: "45.9298017"
-location_lng: "10.092405"
-meeting_time: "7:30"
-meeting_time_en: "7:30 AM"
+location: Spiazzi di Gromo
+location_map_url: https://maps.app.goo.gl/TwmeSmLTVntrWU9J8
+meeting_time: 7:30
+meeting_time_en: 7:30 AM
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 cost_en: 25 pp - under 12 free
 difficulty: Facile
@@ -55,8 +53,10 @@ max_participants: "12"
 what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
   giacca antipioggia, pantaloni lunghi, cappello e crema solare, acqua almeno 1
   litro, snack.
+signup_url: https://docs.google.com/forms/d/e/1FAIpQLSezH81c3vzRt7WB6YYAjpfdCPnhRVitDoKO3ux6vOj4Y_mZzQ/viewform?usp=pp_url&entry.957701292=30%20Agosto%202026%20-%20Passo%20della%20Presolana
+location_lat: "45.9298017"
+location_lng: "10.092405"
 what_to_bring_en: >
   Trekking boots, weather-appropriate clothing, rain jacket, long trousers, hat
   and sunscreen, at least 1 litre of water, a snack.
-signup_url: https://docs.google.com/forms/d/e/1FAIpQLSezH81c3vzRt7WB6YYAjpfdCPnhRVitDoKO3ux6vOj4Y_mZzQ/viewform?usp=pp_url&entry.957701292=30%20Agosto%202026%20-%20Passo%20della%20Presolana
 ---
