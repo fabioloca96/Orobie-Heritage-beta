@@ -9,7 +9,7 @@ gallery:
   - images/uploads/photo_5780437003420765800_x.jpg
   - images/uploads/dsc_1321.png
   - images/uploads/photo_5897634931372920607_y.jpg
-price: Gratuita o 25€ a persona, in base all'uscita
+price: 25€ persona, sotto i 12 anni gratis
 duration: Mezza giornata (mattina o pomeriggio)
 difficulty: Facile
 body_en: |
