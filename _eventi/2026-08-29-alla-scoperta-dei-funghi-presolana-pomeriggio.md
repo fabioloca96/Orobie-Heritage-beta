@@ -44,7 +44,7 @@ desc_en: >-
   For any questions, feel free to contact me: +39 379 227 9354
 location: Passo della Presolana
 location_map_url: https://maps.app.goo.gl/rvU7d6vit4gUygxT7
-meeting_time: 15:00 - rientro previsto entro le 19:00
+meeting_time: "15:00 - rientro previsto entro le 19:00"
 meeting_time_en: "15:00 back by 19:00 "
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 difficulty: Facile
