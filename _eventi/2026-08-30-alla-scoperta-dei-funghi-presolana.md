@@ -1,7 +1,7 @@
 ---
-date: 2026-08-23
+date: 2026-08-30
 category: micologiche
-title: Alla scoperta dei funghi - Spiazzi di Gromo
+title: Alla scoperta dei funghi - Passo della Presolana
 title_en: Guided Mushroom Walk
 images:
   - images/uploads/photo_5897634931372920607_y.jpg
@@ -35,17 +35,17 @@ desc_en: >-
   This walk is not for those hoping to go home with baskets full of mushrooms. It's for those who want to spend a pleasant morning in the woods and learn to see their surroundings from a new perspective, guided by someone who lives the forest every day. Mushroom foraging is subject to rules, which will be explained on site. Determining whether a mushroom is edible is the responsibility of the local ATS Mycological Inspectorate.
 
 
-  I love meeting visitors and showing them the beauty of our valley. Why not book a private tour? Get in touch!
+  I love to meet visitors and showing the beauty of our valley, and maybe you'd like to book a private tour for not mixing up languages. Contact me.
 
 
   Guide: Fabio Locatelli — Accompagnatore di Media Montagna (Certified Mountain Guide), Vice President of the Associazione Micologica Bresadola — Villa d'Ogna Group.
 
 
   For any questions, feel free to contact me: +39 379 227 9354
-location: Spiazzi di Gromo
-location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
+location: Passo della Presolana
+location_map_url: https://maps.app.goo.gl/rvU7d6vit4gUygxT7
 meeting_time: "7:30"
-meeting_time_en: "7:30 AM rientro in mattinata"
+meeting_time_en: "7:30 AM"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 difficulty: Facile
 max_participants: "12"
