@@ -5,6 +5,9 @@ excerpt: Passeggiate guidate alla scoperta dei funghi, adatte a tutti
 excerpt_en: Guided walks to discover mushrooms, suitable for everyone
 cover: images/boletus aestivalis.jpg
 gallery:
+  - images/uploads/dsc_1723.jpg
+  - images/uploads/photo_5780437003420765800_x.jpg
+  - images/uploads/dsc_1321.png
   - images/uploads/photo_5897634931372920607_y.jpg
 price: Gratuita o 25€ a persona, in base all'uscita
 duration: Mezza giornata (mattina o pomeriggio)
