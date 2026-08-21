@@ -154,7 +154,7 @@ nav{
 .ev-fact-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--earth);margin-bottom:.35rem}
 .ev-fact-value{font-family:var(--serif);font-size:1.35rem;color:var(--peak)}
 
-.ev-map-wrap{position:relative;border:1px solid var(--tan);overflow:hidden;height:230px;margin-top:.3rem}
+.ev-map-wrap{position:relative;border:1px solid var(--tan);overflow:hidden;height:230px;margin-top:.7rem}
 .ev-map-frame{width:100%;height:100%;border:0;display:block}
 .ev-map-overlay{position:absolute;inset:0;cursor:pointer;transition:background .2s}
 .ev-map-overlay:hover{background:rgba(46,36,22,.1)}
@@ -206,6 +206,7 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
   .ev-wrap{padding:2.5rem 1.4rem 3rem}
 }
 </style>
+<script data-goatcounter="https://orobie-heritage.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -301,17 +302,22 @@ footer{background:var(--cream);border-top:1px solid var(--tan);padding:1.5rem 3r
 
   <!-- LUOGO -->
   {% if page.location %}
-  {% assign loc_enc = page.location | url_encode %}
   {% if page.location_map_url and page.location_map_url != "" %}
     {% assign maps_href = page.location_map_url %}
   {% else %}
+    {% assign loc_enc = page.location | url_encode %}
     {% assign maps_href = "https://www.google.com/maps/search/?api=1&query=" | append: loc_enc %}
+  {% endif %}
+  {% if page.location_lat and page.location_lng %}
+    {% assign map_q = page.location_lat | append: "," | append: page.location_lng %}
+  {% else %}
+    {% assign map_q = page.location | url_encode %}
   {% endif %}
   <div class="ev-section">
     <div class="ev-label"><span data-lang="it">Luogo</span><span data-lang="en">Location</span></div>
     <p class="ev-value">{{ page.location }}</p>
     <div class="ev-map-wrap">
-      <iframe class="ev-map-frame" src="https://www.google.com/maps?q={{ loc_enc }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" title="Mappa: {{ page.location }}"></iframe>
+      <iframe class="ev-map-frame" src="https://www.google.com/maps?q={{ map_q }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" title="Mappa: {{ page.location }}"></iframe>
       <a class="ev-map-overlay" href="{{ maps_href }}" target="_blank" rel="noopener noreferrer" aria-label="Apri in Google Maps">
         <span class="ev-map-cta">
           <span data-lang="it">Apri in Google Maps ↗</span>

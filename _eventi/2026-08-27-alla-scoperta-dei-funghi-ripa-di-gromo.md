@@ -49,8 +49,10 @@ desc_en: >-
   For any questions, feel free to contact me: +39 379 227 9354
 location: Chiesa della Ripa di Gromo
 location_map_url: https://maps.app.goo.gl/uVCHtLNvxKKY1vzx5
-meeting_time: 7:30
-meeting_time_en: 7:30 AM
+location_lat: "45.9780056"
+location_lng: "9.9316178"
+meeting_time: "7:30"
+meeting_time_en: "7:30 AM"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
 cost_en: 25€ pp - under 12 free
 difficulty: Media
@@ -61,5 +63,5 @@ what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
 what_to_bring_en: >
   Trekking boots, weather-appropriate clothing, rain jacket, long trousers, hat
   and sunscreen, at least 1 litre of water, a snack.
-signup_url: https://forms.gle/cLwxs75pu4FriW3GA
+signup_url: https://docs.google.com/forms/d/e/1FAIpQLSezH81c3vzRt7WB6YYAjpfdCPnhRVitDoKO3ux6vOj4Y_mZzQ/viewform?usp=pp_url&entry.957701292=27%20Agosto%202026%20-%20Ripa%20di%20Gromo
 ---

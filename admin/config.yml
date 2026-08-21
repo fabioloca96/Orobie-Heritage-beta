@@ -31,6 +31,8 @@ collections:
       - {label: "Tags (EN, comma separated)", name: "tag_list_en", widget: "string", required: false, hint: "e.g. Medium difficulty, 6h, Presolana"}
       - {label: "Luogo", name: "location", widget: "string", required: false, hint: "Nome del posto/ritrovo, es. \"Rifugio Curò, Val Seriana\". Viene usato anche per generare l'anteprima della mappa."}
       - {label: "Link Google Maps (opzionale)", name: "location_map_url", widget: "string", required: false, hint: "Su Google Maps: cerca il posto → Condividi → Copia link, e incollalo qui. Se lo lasci vuoto, il pulsante userà comunque il nome del luogo per aprire Google Maps."}
+      - {label: "Coordinate mappa (opzionale)", name: "location_lat", widget: "string", required: false, hint: "Latitudine del segnalino esatto (es. 45.9298017). Senza queste due coordinate l'anteprima della mappa userà il nome del luogo, meno preciso. Manda il link a Claude e te le calcola lui dal link."}
+      - {label: "Longitudine", name: "location_lng", widget: "string", required: false, hint: "Longitudine del segnalino esatto (es. 10.092405)."}
       - {label: "Orario di ritrovo", name: "meeting_time", widget: "string", required: false, hint: "es. \"7:30\" oppure \"7:30, rientro previsto in mattinata\""}
       - {label: "Orario di ritrovo (EN)", name: "meeting_time_en", widget: "string", required: false}
       - {label: "Costo", name: "cost", widget: "string", required: false, hint: "es. \"Gratuita\", \"20€ a persona\""}

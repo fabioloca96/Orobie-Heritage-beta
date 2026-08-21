@@ -44,6 +44,8 @@ desc_en: >-
   For any questions, feel free to contact me: +39 379 227 9354
 location: Spiazzi di Gromo
 location_map_url: https://maps.app.goo.gl/zi18xuTM5N3343LH6?g_st=ic
+location_lat: "45.9714632"
+location_lng: "9.9636972"
 meeting_time: "7:30"
 meeting_time_en: "7:30 AM rientro in mattinata"
 cost: 25€ a persona · bambini fino a 12 anni gratis e accompagnati da un genitore
