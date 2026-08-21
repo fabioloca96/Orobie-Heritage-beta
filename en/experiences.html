@@ -200,7 +200,7 @@ nav{
       {% endif %}
       {% assign ev_title_en = ev.title_en | default: ev.title %}
       {% assign wa_msg = "Hi! I'd like to book: " | append: ev_title_en %}
-      <a class="btn" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_msg | uri_escape }}" target="_blank" rel="noopener noreferrer">Book on WhatsApp</a>
+      <a class="btn" href="https://wa.me/{{ site.contact.whatsapp_number }}?text={{ wa_msg | uri_escape }}" target="_blank" rel="noopener noreferrer" data-goatcounter-click="esperienza-whatsapp">Book on WhatsApp</a>
     </div>
   </div>
   {% endfor %}
