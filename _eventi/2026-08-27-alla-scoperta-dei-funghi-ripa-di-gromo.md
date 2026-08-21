@@ -4,7 +4,7 @@ category: micologiche
 title: Alla scoperta dei funghi - Ripa di Gromo
 title_en: Discovering Fungi - Ripa di Gromo
 images:
-  - images/uploads/photo_5897634931372920607_y.jpg
+  - images/uploads/photo_6021520621621153114_y.jpg
 desc: >
   Camminiamo assieme alla scoperta del mondo dei funghi. In questa escursione
   mattutina scopriremo alcuni dei segreti che si celano dietro a questo
