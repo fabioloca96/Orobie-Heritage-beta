@@ -60,4 +60,5 @@ what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
 what_to_bring_en: >
   Trekking boots, weather-appropriate clothing, rain jacket, long trousers, hat
   and sunscreen, at least 1 litre of water, a snack.
+signup_url: https://docs.google.com/forms/d/e/1FAIpQLSezH81c3vzRt7WB6YYAjpfdCPnhRVitDoKO3ux6vOj4Y_mZzQ/viewform?usp=pp_url&entry.957701292=23%20Agosto%202026%20-%20Spiazzi%20di%20Gromo
 ---
