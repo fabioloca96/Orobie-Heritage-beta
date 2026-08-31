@@ -57,4 +57,7 @@ max_participants_en: "12"
 what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
   giacca antipioggia, pantaloni lunghi, cappello e crema solare, acqua almeno 1
   litro, snack.
+what_to_bring_en: >
+  Trekking boots, weather-appropriate clothing, rain jacket, long trousers, hat
+  and sunscreen, at least 1 litre of water, a snack.
 ---
