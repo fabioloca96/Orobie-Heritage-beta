@@ -54,4 +54,7 @@ cost_en: 25€ , free under 12
 difficulty: Media
 max_participants: "12"
 max_participants_en: "12"
+what_to_bring: Scarponi da trekking, abbigliamento adeguato alla montagna,
+  giacca antipioggia, pantaloni lunghi, cappello e crema solare, acqua almeno 1
+  litro, snack.
 ---
