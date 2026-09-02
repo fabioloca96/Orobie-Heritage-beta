@@ -4,7 +4,7 @@ category: micologiche
 title: Alla scoperta dei funghi - Valcanale
 title_en: Guided mushroom walk
 images:
-  - images/uploads/img_0839.jpg
+  - images/uploads/photo_5780437003420765800_x.jpg
 desc: >
   Camminiamo assieme alla scoperta del mondo dei funghi. In questa escursione
   mattutina scopriremo alcuni dei segreti che si celano dietro a questo
