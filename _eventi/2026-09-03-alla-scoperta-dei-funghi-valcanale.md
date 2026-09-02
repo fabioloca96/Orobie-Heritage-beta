@@ -47,8 +47,8 @@ desc_en: >-
 location: Parcheggio Rifugio Alpe Corte
 location_map_url: https://maps.app.goo.gl/Ktmtvs3HLqgyneHYA
 location_lat: ""
-meeting_time: "7.30"
-meeting_time_en: "7.30"
+meeting_time: 7:30
+meeting_time_en: 7:30
 cost: 25€ a persona, gratis per i minori di 12 anni accompagnati dai genitori
 cost_en: 25€ , free under 12
 difficulty: Media
